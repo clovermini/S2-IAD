@@ -1,0 +1,1878 @@
+{
+    "AITEX": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any irregularities",
+                "{} which should be without any faults",
+                "{} which should be without any scratches",
+                "{} which should be without any hole",
+                "{} which should be without any stains",
+                "{} which should be without any slubs",
+                "{} which should be without any color inconsistencies"
+            ],
+            "defect": [
+                "{} with broken end defect, it appears as  equidistant horizontal or vertical lines along the fabric width, irregular gaps or missing warp threads, disturbances in the pattern continuity",
+                "{} with broken yarn defect, it appears as  visible breaks in the yarn, causing a discontinuity in the fabric pattern, potentially causing a loose or unraveling edge",
+                "{} with broken pick defect, it appears as  as a broken filling yarn in the fabric weaving. it appears as a sharp discontinuity in the weave pattern over the pick length",
+                "{} with weft curling defect, it appears as  warp threads that are bent or curled out of the fabric plane, may appear as ripples or waves in the fabric surface",
+                "{} with fuzzyball defect, it appears as  small, fuzzy or nubby defects typically caused by short, loose fibers, can appear as a small, fluffy mass on the fabric surface",
+                "{} with cut selvage defect, it appears as  broken selvage or ripped selvage, selvage edges that are cut or frayed, irregularities at the fabric's edge",
+                "{} with crease defect, it appears as  folds or lines in the fabric that are not part of the design",
+                "{} with warp ball defect, it appears as  a cluster of warp threads that have come together and formed a ball-like structure, a dense, irregular mass in the fabric",
+                "{} with knots defect, it appears as  a bnormal loops or ties in the fabric where threads have been tied or knotted, can cause a pucker or distortion in the fabric surface",
+                "{} with contamination defect, it appears as  spots, stains, or discolorations, foreign particles or substances on the fabric surface",
+                "{} with nep defect, it appears as  a small knot (or cluster) of entangled fibres consisting either entirely of fibres or of foreign matter entangled with fibres",
+                "{} with weft crack defect, it appears as  a narrow streak running parallel with weft threads caused due to absence of weft, a split or crack in the weft threads, a line where the weft thread has separated or broken"
+            ]
+        },
+        "map": "textile fabric",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/AITEX/train/good/0010_000_01.png",
+            "/data/datasets/pub/public/own_anomaly_detect/AITEX/train/good/0004_000_02.png",
+            "/data/datasets/pub/public/own_anomaly_detect/AITEX/train/good/0017_000_05.png",
+            "/data/datasets/pub/public/own_anomaly_detect/AITEX/train/good/0003_000_02.png",
+            "/data/datasets/pub/public/own_anomaly_detect/AITEX/train/good/0012_000_04.png"
+        ]
+    },
+    "BSD_cls": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any pits",
+                "{} which should be without any scratches",
+                "{} which should be without any corrosion",
+                "{} which should be without any rust",
+                "{} which should be without any wear"
+            ],
+            "defect": [
+                "{} with pitting defect, it appears as holes or cavities where the material has been worn away or corroded, the pits or holes are obscured by a small amount of corrosion product (rust) on the surface"
+            ]
+        },
+        "map": "ball screw drives metal surface",
+        "samples": [
+            "/data/datasets/pub/public/BSD_cls/training_data/N_19351.png",
+            "/data/datasets/pub/public/BSD_cls/training_data/N_2724.png",
+            "/data/datasets/pub/public/BSD_cls/training_data/N_19856.png",
+            "/data/datasets/pub/public/BSD_cls/training_data/N_17385.png",
+            "/data/datasets/pub/public/BSD_cls/training_data/N_10522.png"
+        ]
+    },
+    "BSData": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any pits",
+                "{} which should be without any scratches",
+                "{} which should be without any corrosion",
+                "{} which should be without any rust",
+                "{} which should be without any wear"
+            ],
+            "defect": [
+                "{} with pitting defect, it appears as small holes or cavities where the material has been worn away or corroded, the pits or holes are obscured by a small amount of corrosion product (rust) on the surface"
+            ]
+        },
+        "map": "ball screw drives metal surface",
+        "samples": [
+            "/data/datasets/pub/public/BSData/data/01_200831081043_395000_270_crop_2.jpg",
+            "/data/datasets/pub/public/BSData/data/01_200830080336_597500_315_crop_2.jpg",
+            "/data/datasets/pub/public/BSData/data/01_200828235831_397500_315_crop_2.jpg",
+            "/data/datasets/pub/public/BSData/data/01_200904201120_277500_315_crop_2.jpg",
+            "/data/datasets/pub/public/BSData/data/01_200905161959_635000_270_crop_2.jpg"
+        ]
+    },
+    "BTech_02": {
+        "des": {
+            "good": [
+                "{} with smoothness, evenness, consistent grain pattern, color uniformity surface, which should be without any damage",
+                "{} with smoothness, evenness, consistent grain pattern, color uniformity surface, which should be without any flaw",
+                "{} with smoothness, evenness, consistent grain pattern, color uniformity surface, which should be without any defect",
+                "{} with smoothness, evenness, consistent grain pattern, color uniformity surface, which should be without any scratches",
+                "{} with smoothness, evenness, consistent grain pattern, color uniformity surface, which should be without any splits",
+                "{} with smoothness, evenness, consistent grain pattern, color uniformity surface, which should be without any cracks",
+                "{} with smoothness, evenness, consistent grain pattern, color uniformity surface, which should be without any warp",
+                "{} with smoothness, evenness, consistent grain pattern, color uniformity surface, which should be without any discontinuity",
+                "{} with smoothness, evenness, consistent grain pattern, color uniformity surface, which should be without any wear",
+                "{} with smoothness, evenness, consistent grain pattern, color uniformity surface, which should be without any broken part"
+            ],
+            "defect": [
+                "{} with scratch or wear defect, it appears as linear marks on the surface that can vary in depth and width, a loss of surface detail, a matte finish, or a fuzzy, worn appearance, causes discontinuity in surface texture"
+            ]
+        },
+        "map": "wood surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/BTech_02/train/good/0111.png",
+            "/data/datasets/pub/public/own_anomaly_detect/BTech_02/train/good/0104.png",
+            "/data/datasets/pub/public/own_anomaly_detect/BTech_02/train/good/0340.png",
+            "/data/datasets/pub/public/own_anomaly_detect/BTech_02/train/good/0271.png",
+            "/data/datasets/pub/public/own_anomaly_detect/BTech_02/train/good/0016.png"
+        ]
+    },
+    "Blotchy": {
+        "des": {
+            "good": [
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any damage",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any flaw",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any defect",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any spot",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any texture discontinuity",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, spot, stains, abnormal sizes, unusual bends, and distorted shapes"
+            ]
+        },
+        "map": "blotchy texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Blotchy_099/train/good/051.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Blotchy_099/train/good/043.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Blotchy_099/train/good/006.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Blotchy_099/train/good/083.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Blotchy_099/train/good/027.png"
+        ]
+    },
+    "DAGM2007_Class1": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any scratch",
+                "{} which should be without any spot",
+                "{} which should be without any hole",
+                "{} which should be without any brokenpart",
+                "{} which should be without any texture discontinuity",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with synthetic defect, it appears as a small area with discontinuity in surface texture, a color mutation, scratch, spot, hole or broken part"
+            ]
+        },
+        "map": "textured surface",
+        "samples": [
+            "/data/datasets/pub/public/DAGM2007/Class1/Train/0748.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class1/Train/0581.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class1/Train/0975.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class1/Train/0630.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class1/Train/1141.PNG"
+        ]
+    },
+    "DAGM2007_Class10": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any scratch",
+                "{} which should be without any spot",
+                "{} which should be without any hole",
+                "{} which should be without any broken part",
+                "{} which should be without any texture discontinuity",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with synthetic defect, it appears as a small area with discontinuity in surface texture, a color mutation, scratch, spot, hole or broken part"
+            ]
+        },
+        "map": "textured surface",
+        "samples": [
+            "/data/datasets/pub/public/DAGM2007/Class10/Train/0748.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class10/Train/0581.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class10/Train/0975.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class10/Train/0630.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class10/Train/1141.PNG"
+        ]
+    },
+    "DAGM2007_Class2": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any scratch",
+                "{} which should be without any spot",
+                "{} which should be without any hole",
+                "{} which should be without any broken part",
+                "{} which should be without any texture discontinuity",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with synthetic defect, it appears as a small area with discontinuity in surface texture, a color mutation, scratch, spot, hole or broken part"
+            ]
+        },
+        "map": "textured surface",
+        "samples": [
+            "/data/datasets/pub/public/DAGM2007/Class2/Train/0748.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class2/Train/0581.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class2/Train/0975.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class2/Train/0630.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class2/Train/1141.PNG"
+        
+        ]
+    },
+    "DAGM2007_Class3": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any scratch",
+                "{} which should be without any spot",
+                "{} which should be without any hole",
+                "{} which should be without any broken part",
+                "{} which should be without any texture discontinuity",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with synthetic defect, it appears as a small area with discontinuity in surface texture, a color mutation, scratch, spot, hole or broken part"
+            ]
+        },
+        "map": "textured surface",
+        "samples": [
+            "/data/datasets/pub/public/DAGM2007/Class3/Train/0748.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class3/Train/0581.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class3/Train/0975.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class3/Train/0630.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class3/Train/1141.PNG"
+        
+        ]
+    },
+    "DAGM2007_Class4": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any scratch",
+                "{} which should be without any spot",
+                "{} which should be without any hole",
+                "{} which should be without any broken part",
+                "{} which should be without any texture discontinuity",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with synthetic defect, it appears as a small area with discontinuity in surface texture, a color mutation, scratch, spot, hole or broken part"
+            ]
+        },
+        "map": "textured surface",
+        "samples": [
+            "/data/datasets/pub/public/DAGM2007/Class4/Train/0748.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class4/Train/0581.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class4/Train/0975.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class4/Train/0630.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class4/Train/1141.PNG"
+        
+        ]
+    },
+    "DAGM2007_Class5": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any scratch",
+                "{} which should be without any spot",
+                "{} which should be without any hole",
+                "{} which should be without any broken part",
+                "{} which should be without any texture discontinuity",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with synthetic defect, it appears as a small area with discontinuity in surface texture, a color mutation, scratch, spot, hole or broken part"
+            ]
+        },
+        "map": "textured surface",
+        "samples": [
+            "/data/datasets/pub/public/DAGM2007/Class5/Train/0748.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class5/Train/0581.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class5/Train/0975.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class5/Train/0630.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class5/Train/1141.PNG"
+        
+        ]
+    },
+    "DAGM2007_Class6": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any scratch",
+                "{} which should be without any spot",
+                "{} which should be without any hole",
+                "{} which should be without any broken part",
+                "{} which should be without any texture discontinuity",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with synthetic defect, it appears as a small area with discontinuity in surface texture, a color mutation, scratch, spot, hole or broken part"
+            ]
+        },
+        "map": "textured surface",
+        "samples": [
+            "/data/datasets/pub/public/DAGM2007/Class6/Train/0748.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class6/Train/0581.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class6/Train/0975.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class6/Train/0630.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class6/Train/1141.PNG"
+        
+        ]
+    },
+    "DAGM2007_Class7": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any scratch",
+                "{} which should be without any spot",
+                "{} which should be without any hole",
+                "{} which should be without any broken part",
+                "{} which should be without any texture discontinuity",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with synthetic defect, it appears as a small area with discontinuity in surface texture, a color mutation, scratch, spot, hole or broken part"
+            ]
+        },
+        "map": "textured surface",
+        "samples": [
+            "/data/datasets/pub/public/DAGM2007/Class7/Train/0748.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class7/Train/0581.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class7/Train/0975.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class7/Train/0630.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class7/Train/1141.PNG"
+        
+        ]
+    },
+    "DAGM2007_Class8": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any scratch",
+                "{} which should be without any spot",
+                "{} which should be without any hole",
+                "{} which should be without any broken part",
+                "{} which should be without any texture discontinuity",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with synthetic defect, it appears as a small area with discontinuity in surface texture, a color mutation, scratch, spot, hole or broken part"
+            ]
+        },
+        "map": "textured surface",
+        "samples": [
+            "/data/datasets/pub/public/DAGM2007/Class8/Train/0748.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class8/Train/0581.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class8/Train/0975.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class8/Train/0630.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class8/Train/1141.PNG"
+        
+        ]
+    },
+    "DAGM2007_Class9": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any scratch",
+                "{} which should be without any spot",
+                "{} which should be without any hole",
+                "{} which should be without any broken part",
+                "{} which should be without any texture discontinuity",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with synthetic defect, it appears as a small area with discontinuity in surface texture, a color mutation, scratch, spot, hole or broken part"
+            ]
+        },
+        "map": "textured surface",
+        "samples": [
+            "/data/datasets/pub/public/DAGM2007/Class9/Train/0748.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class9/Train/0581.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class9/Train/0975.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class9/Train/0630.PNG",
+            "/data/datasets/pub/public/DAGM2007/Class9/Train/1141.PNG"
+        
+        ]
+    },
+    "Fibrous": {
+        "des": {
+            "good": [
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any damage",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any flaw",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any defect",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any breaks",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any irregular lines",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any unexpected color changes",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any abnormal sizes",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any unusual bends",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any distorted shapes"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, spot, stains, abnormal sizes, unusual bends, and distorted shapes"
+            ]
+        },
+        "map": "fibrous texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Fibrous_183/train/good/081.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Fibrous_183/train/good/082.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Fibrous_183/train/good/088.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Fibrous_183/train/good/027.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Fibrous_183/train/good/067.png"
+        ]
+    },
+    "KolektorSDD": {
+        "des": {
+            "good": [
+                "{} with a rough, granular texture with a speckled pattern",
+                "{} with fine-grained, matte surface with a uniform but slightly mottled grayscale distribution",
+                "{} with contains irregular, small-scale variations in brightness, giving a speckled appearance",
+                "{} with large white bright area on the left side is a saturated reflection zone caused by strong illumination, appearing as an irregular, smooth-edged patch with no distinct surface texture"
+            ],
+            "defect": [
+                "{} with microscopic fractions or cracks were observed on the surface of the plastic embedding in electrical commutators, it appears as thin horizontal scratch-like line with sharp edges and dark color"
+            ]
+        },
+        "map": "kolektor surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD/train/good/kos36_Part1.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD/train/good/kos50_Part0.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD/train/good/kos11_Part5.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD/train/good/kos31_Part6.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD/train/good/kos48_Part3.jpg"
+        ]
+    },
+    "KolektorSDD2": {
+        "des": {
+            "good": [
+                "{} with a uniform, consistent texture with a smooth and even black appearance",
+                "{} with uniformly dark, matte background with fine, irregular fiber-like patterns",
+                "{} with small, scattered light specks are visible, which are part of the natural surface pattern and can resemble tiny defect points"
+            ],
+            "defect": [
+                "{} with discolor defect",
+                "{} with surface imperfections defect, it appears as scratch-like streak with scattered pink reflective specks"
+            ]
+        },
+        "map": "kolektor surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD2/train/good/11294.png",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD2/train/good/10696.png",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD2/train/good/11510.png",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD2/train/good/11633.png",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD2/train/good/12307.png"
+        ]
+    },
+    "Magnetic_tile": {
+        "des": {
+            "good": [
+                "{} with a consistent, smooth, and level texture, which should be without any damage",
+                "{} with a consistent, smooth, and level texture, which should be without any flaw",
+                "{} with a consistent, smooth, and level texture, which should be without any defects",
+                "{} with a consistent, smooth, and level texture, which should be without any scratches",
+                "{} with a consistent, smooth, and level texture, which should be without any spots",
+                "{} with a consistent, smooth, and level texture, which should be without any inclusions",
+                "{} with a consistent, smooth, and level texture, which should be without any irregularities",
+                "{} with a consistent, smooth, and level texture, which should be without any visible deviations",
+                "{} with a consistent, smooth, and level texture, which should be without any bumps",
+                "{} with a consistent, smooth, and level texture, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with blowhole defect, it appears as  dark spot, disrupts the otherwise linear and uniform texture",
+                "{} with break defect, it appears as  irregular area where the surface appears torn or fractured",
+                "{} with crack defect, it appears as  a thin fissure or line in the tile",
+                "{} with fray defect, it appears as  slight discoloration, rough areas",
+                "{} with uneven defect, it appears as  noticeable bump or raised area that disrupts the flatness of the surface, creating a pronounced irregularity and a visible distortion in the otherwise even texture"
+            ]
+        },
+        "map": "magnetic tile surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/Magnetic_tile/train/good/exp6_num_6600.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/Magnetic_tile/train/good/exp1_num_116949.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/Magnetic_tile/train/good/exp3_num_275697.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/Magnetic_tile/train/good/exp5_num_311371.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/Magnetic_tile/train/good/exp4_num_280989.jpg"
+        ]
+    },
+    "Marbled": {
+        "des": {
+            "good": [
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any damage",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any flaw",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any defect",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any spot",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any stains",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any texture discontinuity",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, spot, stains, abnormal sizes, unusual bends, and distorted shapes"
+            ]
+        },
+        "map": "marbled texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Marbled_078/train/good/000.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Marbled_078/train/good/075.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Marbled_078/train/good/071.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Marbled_078/train/good/023.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Marbled_078/train/good/009.png"
+        ]
+    },
+    "Matted": {
+        "des": {
+            "good": [
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any damage",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any flaw",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any defect",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any spot",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any stains",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any texture discontinuity",
+                "{} with isotropic textures without obvious repetitive patterns, which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, spot, stains, abnormal sizes, unusual bends, small fluffy mass, and distorted shapes"
+            ]
+        },
+        "map": "matted texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Matted_069/train/good/022.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Matted_069/train/good/057.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Matted_069/train/good/089.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Matted_069/train/good/074.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Matted_069/train/good/035.png"
+        ]
+    },
+    "Mesh": {
+        "des": {
+            "good": [
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any damage",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any flaw",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any defect",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any texture discontinuity",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any broken lines",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any unusual bends",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any distorted shapes"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, broken lines, anomalous patterns, abnormal sizes, unusual bends, small fluffy mass, and distorted shapes"
+            ]
+        },
+        "map": "mesh texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Mesh_114/train/good/046.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Mesh_114/train/good/061.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Mesh_114/train/good/099.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Mesh_114/train/good/029.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Mesh_114/train/good/068.png"
+        ]
+    },
+    "Perforated": {
+        "des": {
+            "good": [
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any damage",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any flaw",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any defect",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any texture discontinuity",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any broken lines",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any unusual bends",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any distorted shapes"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, broken lines, anomalous patterns, abnormal sizes, unusual bends, small fluffy mass, and distorted shapes"
+            ]
+        },
+        "map": "perforated texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Perforated_037/train/good/017.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Perforated_037/train/good/008.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Perforated_037/train/good/069.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Perforated_037/train/good/070.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Perforated_037/train/good/099.png"
+        ]
+    },
+    "Stratified": {
+        "des": {
+            "good": [
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any damage",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any flaw",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any defect",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any texture discontinuity",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any broken lines",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any discoloration",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any stains",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any unusual bends",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any distorted shapes"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, broken lines, discoloration, stains, anomalous patterns, abnormal sizes, unusual bends, small fluffy mass, and distorted shapes"
+            ]
+        },
+        "map": "stratified texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Stratified_154/train/good/078.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Stratified_154/train/good/052.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Stratified_154/train/good/083.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Stratified_154/train/good/029.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Stratified_154/train/good/003.png"
+        ]
+    },
+    "Woven_001": {
+        "des": {
+            "good": [
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any damage",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any flaw",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any defect",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any texture discontinuity",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any broken lines",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any unusual bends",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any holes",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any distorted shapes"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, broken lines, anomalous patterns, abnormal sizes, holes, unusual bends, small fluffy mass, and distorted shapes"
+            ]
+        },
+        "map": "woven texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_001/train/good/043.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_001/train/good/020.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_001/train/good/011.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_001/train/good/018.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_001/train/good/099.png"
+        ]
+    },
+    "Woven_068": {
+        "des": {
+            "good": [
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any damage",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any flaw",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any defect",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any texture discontinuity",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any broken lines",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any discoloration",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any stains",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any unusual bends",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any distorted shapes"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, broken lines, discoloration, stains, anomalous patterns, abnormal sizes, unusual bends, small fluffy mass, and distorted shapes"
+            ]
+        },
+        "map": "woven texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_068/train/good/034.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_068/train/good/092.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_068/train/good/050.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_068/train/good/055.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_068/train/good/099.png"
+        ]
+    },
+    "Woven_104": {
+        "des": {
+            "good": [
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any damage",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any flaw",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any defect",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any texture discontinuity",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any broken lines",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any discoloration",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any stains",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any unusual bends",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any distorted shapes"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, broken lines, discoloration, stains, anomalous patterns, abnormal sizes, unusual bends, small fluffy mass, and distorted shapes"
+            ]
+        },
+        "map": "woven texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_104/train/good/035.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_104/train/good/011.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_104/train/good/027.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_104/train/good/061.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_104/train/good/099.png"
+        ]
+    },
+    "Woven_125": {
+        "des": {
+            "good": [
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any damage",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any flaw",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any defect",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any texture discontinuity",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any broken lines",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any discoloration",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any stains",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any unusual bends",
+                "{} with anisotropic textures having a repetitive structure with some irregularity, which should be without any distorted shapes"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, broken lines, discoloration, stains, anomalous patterns, abnormal sizes, unusual bends, small fluffy mass, and distorted shapes"
+            ]
+        },
+        "map": "woven texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_125/train/good/025.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_125/train/good/060.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_125/train/good/083.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_125/train/good/002.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_125/train/good/091.png"
+        ]
+    },
+    "Woven_127": {
+        "des": {
+            "good": [
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any damage",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any flaw",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any defect",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any texture discontinuity",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any broken lines",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any unusual bends",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any holes",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any stains",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any distorted shapes"
+            ],
+            "defect": [
+                "{} with defect, it appears as a small area with discontinuity in surface texture, marked by irregularities in line, unexpected color changes, broken lines, anomalous patterns, abnormal sizes, holes, stains, unusual bends, small fluffy mass, and distorted shapes"
+            ]
+        },
+        "map": "woven texture",
+        "samples": [
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_127/train/good/002.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_127/train/good/036.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_127/train/good/003.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_127/train/good/060.png",
+            "/data/datasets/pub/public/DTD-Synthetic/Woven_127/train/good/099.png"
+        ]
+    },
+    "aluminum": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any hole",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any slubs",
+                "{} with a smooth, uniform finish, which should be without any dents",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with bubble defect, it appears as  small, dark, and irregularly shaped protrusion. it appears as a raised spot, indicating trapped gas or contamination beneath the surface that caused the coating or material to swell slightly, disrupting the uniform appearance of the aluminum",
+                "{} with bump defect, it appears as  irregular, raised area with uneven edges, resembling a small mound or protrusion. this defect disrupts the flatness of the surface, indicating material deformation, possibly due to contamination or an impact that caused the aluminum to bulge outward",
+                "{} with dent defect, it appears as  small, dark, irregular depressions that disrupt the smoothness of the surface. these dents appear as shallow indentations with uneven edges, indicating areas where the aluminum has been pushed inward, possibly due to impacts or pressure, resulting in a series of noticeable, concave imperfections",
+                "{} with emulsion mark defect, it appears as  a series of dark, irregularly shaped blotches that appear as a cluster of spots. these marks disrupt the uniformity of the surface and suggest areas where emulsion or residue has settled unevenly, leaving behind visible stains or patches that contrast sharply with the surrounding metal",
+                "{} with oil_spot defect, it appears as  distinct, dark mark with a smooth and glossy appearance. this spot contrasts sharply with the surrounding area, indicating a localized deposit of oil or lubricant that disrupts the uniform texture and finish of the aluminum, creating a visible stain with defined, rounded edges",
+                "{} with peeling defect, it appears as  dark, irregular strip that appears as if the surface layer is partially lifting or flaking off. this defect disrupts the smooth texture of the aluminum, showing signs of material separation or coating detachment, creating a visibly uneven and rough area compared to the surrounding surface",
+                "{} with pit defect, it appears as  small, dark, circular depression, resembling a tiny crater or hole. this defect disrupts the smoothness of the surface, creating a noticeable indentation that contrasts with the surrounding area, indicating localized material loss or surface damage",
+                "{} with roll_mark defect, it appears as  short, dark, linear mark that runs parallel to the surface, indicating a minor indentation or imprint caused by irregularities in the rolling process",
+                "{} with scratch defect, it appears as  multiple thin lines running parallel along the surface. these scratches are fine and dark, contrasting with the surrounding smooth aluminum, and indicate surface abrasions that have removed or displaced material, creating visible streaks that disrupt the uniformity of the finish",
+                "{} with scuffing defect, it appears as  a series of irregular, dark streaks and smudges that vary in length and intensity. these marks indicate surface abrasion or rubbing, which disrupts the uniform appearance of the aluminum by creating uneven, roughened areas with a duller finish compared to the surrounding smooth surface",
+                "{} with sticking defect, it appears as  small, irregular dark spots scattered across the center of the image. these spots appear as localized accumulations of foreign material or debris that have adhered to the surface, disrupting the smooth and uniform finish of the aluminum. the defect creates uneven patches that contrast with the surrounding area"
+            ]
+        },
+        "map": "aluminum sheet metal surface",
+        "samples": [
+            "/data/datasets/pub/public/aluminum/al_224_dark/train/good/1_00000971_1865_224x224_1282x1750.png",
+            "/data/datasets/pub/public/own_anomaly_detect/aluminum/train/good/1_00000039_1858_224x224_1834x466.png",
+            "/data/datasets/pub/public/aluminum/al_224_dark/train/good/1_00000123_1862_224x224_1741x551.png",
+            "/data/datasets/pub/public/own_anomaly_detect/aluminum/train/good/1_00000124_1863_224x224_2609x533.png",
+            "/data/datasets/pub/public/aluminum/al_224_dark/train/good/1_00000040_1882_224x224_3348x14.png"
+        ]
+    },
+    "aluminum_ingot": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with slag inclusion defect, it appears as  black blocks or scattered dots, and sometimes irregular shapes, with obvious color difference from the matrix. most slag inclusions will change the pattern of the milling cutter pattern, showing a \"tailing\" phenomenon",
+                "{} with pit slag inclusion defect, it appears as  multiple irregular dark spots and small pits distributed along the length of the sheet. these defects contrast sharply with the surrounding smooth surface, indicating the presence of impurities or inclusions that were not fully removed during the manufacturing process, leading to localized surface irregularities",
+                "{} with aluminum chips defect, it appears as  varies in size and shape (filamentous, blocky, curly), black in color, with clear outlines and boundaries, and obvious color difference from the base",
+                "{} with milling cutter marks defect, it appears as  groove pattern, which is regular in shape, repetitive, and has a significant color difference from the surrounding area, indicates that the milling process has left a mark on the material",
+                "{} with oil stains defect, it appears as  distributed in single units such as water droplets, blocks, strips, or large-area flakes, and appears black on the image",
+                "{} with scratches defect, it appears as  irregular lines that appear curved or straight across an otherwise smooth background. they appear like random shallow scratches that disrupt the uniformity of the surface and indicate areas where the material has been unintentionally scratched or damaged",
+                "{} with cracks defect, it appears as  distributed along the length of the aluminum ingot, it is continuous or discontinuous line-shaped, and distributed as black lines on the image, with obvious color difference from the matrix",
+                "{} with oxide film defect, it appears as  yellow-brown, gray strips or flakes of small platforms, which appear as black strips or flakes in the image, with obvious color difference from the substrate"
+            ]
+        },
+        "map": "aluminum ingot surface",
+        "samples": [
+            "/data/datasets/pub/public/aluminum_ingot/Ba/Ba_64.bmp",
+            "/data/datasets/pub/public/aluminum_ingot/Ba/Ba_330.bmp",
+            "/data/datasets/pub/public/aluminum_ingot/Ba/Ba_133.bmp",
+            "/data/datasets/pub/public/aluminum_ingot/Ba/Ba_199.bmp",
+            "/data/datasets/pub/public/aluminum_ingot/Ba/Ba_256.bmp"
+        ]
+    },
+    "aluminum_strip": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any hole",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any slubs",
+                "{} with a smooth, uniform finish, which should be without any dents",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with corrosion defect, it appears as  distinct light-colored patches, some of which are circular and slightly rough in texture, indicating surface degradation",
+                "{} with dirty defect, it appears as  small, dark specks and spots scattered across the image. these marks indicate contamination by dust, dirt, or other foreign particles that have adhered to the surface",
+                "{} with oil spot defect, it appears as  series of white spots contrasting with the dark background",
+                "{} with oil-gray stripe defect, it appears as  dispersed, grayish streaks that appear as strip-like patterns contrasting sharply with the darker background",
+                "{} with imprint defect, it appears as  visible, shallow depressions or marks that resemble a pattern or texture pressed into the surface. these imprints are often irregular and may be slightly darker or lighter than the surrounding area, indicating that an external force or object has left a discernible impression on the aluminum, disrupting its smoothness and uniform appearance",
+                "{} with scratch defect, it appears as  multiple thin lines running parallel along the surface. these scratches are fine and light",
+                "{} with blistering defect, it appears as  white, spot-like areas scattered across the surface. these spots appear as raised, irregular patches with a noticeable difference in color and texture from the surrounding area, indicating that the coating or surface layer has lifted or separated, creating an uneven and textured appearance",
+                "{} with adhesion defect, it appears as  multiple irregular, white spots or streaks scattered across the surface. these marks appear as uneven, discolored patches or lines, indicating areas where adhesive or residue has adhered and disrupted the uniform appearance of the aluminum, resulting in a visible, textured pattern",
+                "{} with color variation defect, it appears as  uneven color distribution across the surface, resulting in noticeable patches or streaks of varying hues. this defect creates a non-uniform appearance where the color deviates from the expected consistent tone, highlighting inconsistencies in the coating or surface treatment",
+                "{} with black stripe defect, it appears as  vertical black lines that may be either continuous or segmented. these lines create a distinct contrast against the surrounding surface, disrupting the uniformity of the aluminum with noticeable vertical discoloration or streaks",
+                "{} with emulsion mark defect, it appears as  a series of light, irregularly shaped blotches that appear as a cluster of spots"
+            ]
+        },
+        "map": "aluminum sheet metal surface",
+        "samples": [
+            "/data/datasets/pub/public/aluminum_strip/good/good_1.png",
+            "/data/datasets/pub/public/aluminum_strip/good/good_2.png",
+            "/data/datasets/pub/public/aluminum_strip/good/good_3.png",
+            "/data/datasets/pub/public/aluminum_strip/good/good_4.png",
+            "/data/datasets/pub/public/aluminum_strip/good/good_5.png"
+        ]
+    },
+    "cold_rolled_strip_steel": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any scars",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any scratchs",
+                "{} with a smooth, uniform finish, which should be without any pits",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with contamination defect, it appears as  a series of small, irregularly shaped dark spots scattered along a perpendicular path on the surface. these spots most likely represent contaminants or residue that were not properly removed during processing. the spots are unevenly distributed and vary in size",
+                "{} with chisel mark defect, it appears as  mall, densely packed indentations or gouges on a surface, similar to the marks left by a chisel tool. these defects usually appear as repeated sharp indentations, usually of a certain depth, uneven and rough",
+                "{} with rust spot defect, it appears as  scattered very small black rust spots",
+                "{} with rolled-in foreign material defect, it appears as  obvious uneven areas, foreign body sensation, black pits",
+                "{} with degreasing scratch defect, it appears as  a thin linear mark running vertically along the surface. this scratch appears as a thin, intermittent narrow line",
+                "{} with hot rolling scratch defect, it appears as  light, bright areas that contrast with the background, have irregular shapes, and have a rough texture",
+                "{} with acid stain defect, it appears as  uneven, mottled areas of surface color, lighter or discolored surfaces",
+                "{} with insufficient pickling defect, it appears as  scattered black dots of irregular shape",
+                "{} with severe scale shedding mark defect, it appears as  large patches of light and dark marks on a bright background, accompanied by an uneven surface and rough texture that destroys the original smooth surface texture",
+                "{} with scale shedding mark defect, it appears as  large light dark traces on a bright background",
+                "{} with edge seam imprint defect, it appears as  one or more wavy, linear, depressed marks that follow an irregular path on the surface",
+                "{} with scar defect, it appears as  irregular raised or sunken areas on the surface that appear rough and uneven. raised textures and irregular edges indicate that the surface has been altered, forming obvious flaws, similar to scars",
+                "{} with interlayer abrasion defect, it appears as  intermittent light or dark linear scratches",
+                "{} with indentation defect, it appears as  obvious small local depressions or protrusions on the surface",
+                "{} with black stripe defect, it appears as  dark linear streaks running vertically along the surface. such streaks may be caused by contamination during rolling or pickling, residual oil, or uneven surface preparation",
+                "{} with peeling defect, it appears as  irregular linear dark patches resembling scratches where the surface coating or material is beginning to separate or flake off"
+            ]
+        },
+        "map": "cold rolled strip steel surface",
+        "samples": [
+            "/data/datasets/pub/public/cold_rolled_strip_steel/Ba/Ba_154.bmp",
+            "/data/datasets/pub/public/cold_rolled_strip_steel/Ba/Ba_375.bmp",
+            "/data/datasets/pub/public/cold_rolled_strip_steel/Ba/Ba_286.bmp",
+            "/data/datasets/pub/public/cold_rolled_strip_steel/Ba/Ba_129.bmp",
+            "/data/datasets/pub/public/cold_rolled_strip_steel/Ba/Ba_10.bmp"
+        ]
+    },
+    "gc10_steel_plate": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any holes",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with punching hole defect, it appears as  obvious black holes",
+                "{} with welding line defect, it appears as  distinct horizontal seam running across the surface of the material. this line is a result of the welding process, where two pieces of material were joined together. the defect is visible as a consistent line that may be slightly raised or discolored compared to the surrounding areas. this can indicate differences in texture, composition, or heat treatment along the weld, which might affect the structural integrity or aesthetic appearance of the material. the welding line may also exhibit slight irregularities or imperfections that are common in welded joints, further distinguishing it from the smoother, adjacent surfaces",
+                "{} with crescent gap defect, it appears as  distinct curved gap or space at the edge, shaped like a crescent",
+                "{} with water spot defect, it appears as  thin, irregular streaks or marks that are darker than the surrounding surface. these streaks resemble the pattern left by water droplets or uneven drying of moisture, resulting in staining or discoloration",
+                "{} with oil spot defect, it appears as  blocky dark irregular marks",
+                "{} with silk spot defect, it appears as  tiny linear lines. the shape and distribution of these lines are irregular, similar to silk threads or tiny scratches",
+                "{} with inclusion defect, it appears as  black blocks or scattered dots, and sometimes irregular shapes, with obvious color difference from the background",
+                "{} with rolled pit defect, it appears as  series of small, irregular depressions or indentations on the surface of a material. these pits appear as shallow, localized areas and may occur in linear patterns or in clusters",
+                "{} with crease defect, it appears as  a visible linear indentation or crease across the surface of a material. this defect appears as a long, dark, narrow line",
+                "{} with waist folding defect, it appears as  noticeable bending indentation or crease on the surface, resembling a \"waist\" or band. this defect appears as a noticeable uneven area after the material is compressed or bent, resulting in localized deformation"
+            ]
+        },
+        "map": "steel metallic surface",
+        "samples": [
+            "/data/datasets/pub/public/GC10-DET/good/good_1.png",
+            "/data/datasets/pub/public/GC10-DET/good/good_2.png",
+            "/data/datasets/pub/public/GC10-DET/good/good_3.png",
+            "/data/datasets/pub/public/GC10-DET/good/good_4.png",
+            "/data/datasets/pub/public/GC10-DET/good/good_5.png"
+        ]
+    },
+    "grid": {
+        "des": {
+            "good": [
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any damage",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any flaw",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any defect",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any irregularities",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any bends",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any breaks",
+                "{} with anisotropic textures having a repetitive structure with perfect regularity, which should be without any distortions"
+            ],
+            "defect": [
+                "{} with bent defect, it appears as  a slight curve or a significant angle, affecting the mesh's uniformity, not straight, showing a deviation from their intended linear form",
+                "{} with broken defect, it appears as  breaks or irregular tears along the wire's length, a irregular opening, a split in the otherwise continuous pattern, disrupting the uniformity of the structure",
+                "{} with glue defect, it appears as  extra transparent blocks, a small, irregular gap or tear, where the otherwise uniform pattern is disrupted. the defect area has a slightly different texture and may appear as a minor break in the structure, which could indicate damage or a manufacturing imperfection",
+                "{} with metal_contamination defect, it appears as  a crumpled or folded defect, creating a noticeable protrusion from the surface, a small piece of material jutting out from the plane of the mesh",
+                "{} with thread defect, it appears as  additional irregular clump or cords are embedded in the mesh and intertwined with it"
+            ]
+        },
+        "map": "mesh or grid structure",
+        "samples": [
+            "/data/datasets/pub/public/MVTec_AD/grid/train/good/099.png",
+            "/data/datasets/pub/public/MVTec_AD/grid/train/good/024.png",
+            "/data/datasets/pub/public/MVTec_AD/grid/train/good/253.png",
+            "/data/datasets/pub/public/MVTec_AD/grid/train/good/102.png",
+            "/data/datasets/pub/public/MVTec_AD/grid/train/good/049.png"
+        ]
+    },
+    "hot_rolled_strip_steel": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any scars",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any scratchs",
+                "{} with a smooth, uniform finish, which should be without any holes",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with edge crack defect, it appears as  he transverse cracks on the edge of the steel plate are of varying lengths and are similar to sawtooth shapes",
+                "{} with fold defect, it appears as  noticeable, distinct crease or wrinkle in the surface. this defect appears as a series of visible wave-like distortions, noticeable, distinct creases or wrinkles in the surface, raised irregular lines or ridges, where the material is compressed or bent, producing a noticeable deformation. the wrinkles disrupt the smoothness of the surface and may have sharp, uneven edges",
+                "{} with roll mark defect, it appears as  convex and concave defects on the surface of the strip that are distributed at a certain interval, periodically, and basically the same in size and shape, and the appearance is irregular. according to the process of producing roller marks, this defect can be divided into rolling roller marks and finishing roller marks. according to the degree of convexity and concaveness of the roller mark defect, it can be divided into convex roller marks and concave roller marks",
+                "{} with hole defect, it appears as  obvious black irregular holes",
+                "{} with inclusion defect, it appears as  characterized by blister-like protrusions that typically extend in a spindle shape along the rolling direction. when densely distributed, these blisters can form a series of small bubbles",
+                "{} with flake iron scale defect, it appears as  irregularly shaped, flaky patches on the surface. these patches look like thin layers peeling off from the underlying material. the scales are usually uneven and of varying sizes, often with rough or jagged edges and dark in color",
+                "{} with longitudinal crack defect, it appears as  one or more dark, narrow, elongated cracks running vertically through the material with irregular edges and varying widths\\",
+                "{} with head roller mark defect, it appears as  distinct curve or band across the surface of the material. this mark may be caused by the initial contact of the rollers during the rolling process",
+                "{} with iron scale press defect, it appears as  dark, irregularly shaped lines or streaks embedded in the surface of a material; rough, uneven marks that contrast with the smoother surrounding surface",
+                "{} with scar defect, it appears as  dark, irregularly shaped depressions in the surface with rough, jagged edges and scattered small marks around the scars indicate damage that may have caused the material to chip or flake around the main defect",
+                "{} with scratch defect, it appears as  multiple bright thin lines, straight lines, and a certain direction",
+                "{} with peeling defect, it appears as  local areas, the surface layer is partially lifted or separated from the underlying material. the defect appears as an irregular jagged part of the surface that is raised or missing, exposing the underlying material, and appears as an irregular dark or light area, destroying the original texture",
+                "{} with scale shedding mark defect, it appears as  large irregular bright traces on a dark background",
+                "{} with wave defect, it appears as  a series of undulating, corrugated distortions in the surface. this defect produces a wavy pattern that looks like a series of peaks and troughs, disrupting an otherwise smooth, uniform surface. the amplitude and frequency of the waves may vary",
+                "{} with water drop defect, it appears as  irregular dark spots similar to water droplets are marked with light spots. these spots are usually slightly raised or discolored compared to the surrounding surface, with localized discoloration or surface irregularities"
+            ]
+        },
+        "map": "hot rolled strip steel surface",
+        "samples": [
+            "/data/datasets/pub/public/hot_rolled_strip_steel/ba/ba_349.bmp",
+            "/data/datasets/pub/public/hot_rolled_strip_steel/ba/ba_205.bmp",
+            "/data/datasets/pub/public/hot_rolled_strip_steel/ba/ba_115.bmp",
+            "/data/datasets/pub/public/hot_rolled_strip_steel/ba/ba_289.bmp",
+            "/data/datasets/pub/public/hot_rolled_strip_steel/ba/ba_255.bmp"
+        ]
+    },
+    "leather": {
+        "des": {
+            "good": [
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any damage",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any flaw",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any defect",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any visible imperfections",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any cuts",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any indentations",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with color defect, it appears as  a small, irregular light discoloration mark that contrasts with the surrounding uniform brown color, disrupting the consistent appearance of the leather texture",
+                "{} with cut defect, it appears as  a small, sharp incision with a slight tear, revealing a lighter underlying layer and disrupting the uniform surface texture of the leather",
+                "{} with fold defect, it appears as  a smooth or rippled line, a raised, elongated ridge on the leather surface, where the material appears slightly wrinkled or compressed, causing a noticeable deviation from the otherwise smooth and consistent texture",
+                "{} with glue defect, it appears as  extra transparent blocks, lumps, streaks, or an uneven layer on the surface or edges, a round, glossy spot with a slightly raised surface, distinctly shinier and smoother than the surrounding matte leather texture, indicating the presence of excess adhesive material",
+                "{} with poke defect, it appears as  small holes or punctures in the leather, a small, sharp indentation or puncture in the leather surface, creating a tiny hole with slight tearing around the edges, disrupting the uniform texture"
+            ]
+        },
+        "map": "leather surface",
+        "samples": [
+            "/data/datasets/pub/public/MVTec_AD/leather/train/good/234.png",
+            "/data/datasets/pub/public/MVTec_AD/leather/train/good/229.png",
+            "/data/datasets/pub/public/MVTec_AD/leather/train/good/194.png",
+            "/data/datasets/pub/public/MVTec_AD/leather/train/good/237.png",
+            "/data/datasets/pub/public/MVTec_AD/leather/train/good/005.png"
+        ]
+    },
+    "medium_heavy_plate": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any scratchs",
+                "{} with a smooth, uniform finish, which should be without any holes",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with crack defect, it appears as  visible linear cracks or split on a surface. cracks appear as multiple deep, narrow gaps that disrupt the continuity of the material across or along the surface. cracks may have jagged or uneven edges, irregular lines, jagged or cracked shapes, and cracks of varying sizes and depths",
+                "{} with star shaped crack defect, it appears as  distribution is non-directional and the morphology is net-like. the general crack depth can reach 1-4mm, and some even reach 20mm. the surface cracks are irregular and diffusely distributed. sometimes they are as thin as a hair and very shallow, and some cracks are very deep, showing jagged or cracked dark lines on the image",
+                "{} with indentation defect, it appears as  irregular, bright-colored spots or patches on the surface that contrast sharply with the dark background",
+                "{} with iron oxide scale defect, it appears as  the color block has a significant difference in reflectivity between the iron oxide and the background. its size has a certain scale range and has a tortuous edge contour. the directionality of the contour is not obvious",
+                "{} with longitudinal crack defect, it appears as  most of the longitudinal cracks are concentrated in the middle of the inner arc of the ingot, with varying lengths. sometimes they run through the entire ingot as large longitudinal cracks with a depth of about 10-15mm; some are intermittent or intermittent depressions. one or more dark, narrow and elongated cracks run vertically through the material with irregular edges and varying widths",
+                "{} with pit spot defect, it appears as  densely distributed black spots on the entire image, with different shapes and sizes",
+                "{} with roll mark defect, it appears as  vary in size and are scattered in an irregular direction. the morphology is special, with white surroundings and a dark depression in the middle",
+                "{} with pressed iron oxide scale defect, it appears as  a large dark area containing a series of dark, irregularly shaped streaks or smudges",
+                "{} with scratches defect, it appears as  straight and thin dark lines. there is a visible depth, and the depth varies. it is parallel or perpendicular to the rolling direction, straight line, and a small amount is curved. the scratch is a groove with a concave center and convex sides",
+                "{} with straightening roller mark defect, it appears as  irregular dents, parallel to the direction, with color difference from the surrounding area, destroying the original texture",
+                "{} with warping defect, it appears as  areas with obvious depth changes are generally larger in scale, with jagged edges and light and dark changes due to lighting",
+                "{} with transverse crack defect, it appears as   distinct, horizontal fracture or split that crosses the surface of the material. this crack runs perpendicular to the rolling direction and appears as a deep, narrow gap with jagged or uneven edges. some images show multiple cracks intersecting, showing jagged or cracked dark lines",
+                "{} with water drop defect, it appears as  a circular water droplet-shaped area with a clear difference in light and dark. the water mark is generally dark, with some surfaces having bright reflections",
+                "{} with water mark defect, it appears as  irregular dark streaks or spots that are usually slightly raised or discolored compared to the surrounding surface. they may show patterns of water droplets or moisture evaporation, leaving faint, uneven discoloration. irregular shape, varying shades of color",
+                "{} with work roller mark defect, it appears as  uniform, elongated indentations or grooves running in the direction of the roller\u2019s movement. irregular, dark depression in the middle with white surrounding color changes"
+            ]
+        },
+        "map": "medium heavy steel plate surface",
+        "samples": [
+            "/data/datasets/pub/public/medium_heavy_plate/Ba/Ba_287.bmp",
+            "/data/datasets/pub/public/medium_heavy_plate/Ba/Ba_458.bmp",
+            "/data/datasets/pub/public/medium_heavy_plate/Ba/Ba_8.bmp",
+            "/data/datasets/pub/public/medium_heavy_plate/Ba/Ba_574.bmp",
+            "/data/datasets/pub/public/medium_heavy_plate/Ba/Ba_187.bmp"
+        ]
+    },
+    "metal_plate": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any rust",
+                "{} with a smooth, uniform finish, which should be without any discolorations",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any scratchs",
+                "{} with a smooth, uniform finish, which should be without any irregularities"
+            ],
+            "defect": [
+                "{} with major rust defect, it appears as  a large dark yellow area of rust",
+                "{} with scratches defect, it appears as  criss-cross scratched area reveals the metal background, which has a significant color difference from the blue background",
+                "{} with total rust defect, it appears as  the whole metal plate is rusted with metallic and dark yellow colors interweaving"
+            ]
+        },
+        "map": "blue metal plate hanging on a hook",
+        "samples": [
+            "/data/datasets/pub/public/MPDD/metal_plate/train/good/004.png",
+            "/data/datasets/pub/public/MPDD/metal_plate/train/good/015.png",
+            "/data/datasets/pub/public/MPDD/metal_plate/train/good/043.png",
+            "/data/datasets/pub/public/MPDD/metal_plate/train/good/027.png",
+            "/data/datasets/pub/public/MPDD/metal_plate/train/good/018.png"
+        ]
+    },
+    "moderately_thick_plates": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any irregularities",
+                "{} which should be without any faults",
+                "{} which should be without any cracks",
+                "{} which should be without any scar",
+                "{} which should be without any inclusions",
+                "{} which should be without any depressions",
+                "{} which should be without any scratchs",
+                "{} which should be without any holes",
+                "{} which should be without any irregularities"
+            ],
+            "defect": [
+                "{} with scar defect, it appears as  dark, irregularly shaped depressions in the surface with rough, jagged edges and scattered small marks around the scars indicate damage that may have caused the material to chip or flake around the main defect, crustaceous, granular and nodular",
+                "{} with inclusion defect, it appears as  blister-like protrusions that typically extend in a spindle shape along the rolling direction. when densely distributed, these blisters can form a series of small bubbles"
+            ]
+        },
+        "map": "moderately thick steel plate surface",
+        "samples": [
+            "/data/datasets/pub/public/moderately_thick_plates/images/C621009_V01_F00000_h_crack.jpg",
+            "/data/datasets/pub/public/moderately_thick_plates/images/C771344_V10_F00004_cp.jpg",
+            "/data/datasets/pub/public/moderately_thick_plates/images/C773242_V13_F00004_cp.jpg",
+            "/data/datasets/pub/public/moderately_thick_plates/images/C787937_V13_F00003_cp.jpg",
+            "/data/datasets/pub/public/moderately_thick_plates/images/C767332_V13_F00007_cp.jpg"
+        ]
+    },
+    "neu_aluminum": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any irregularities",
+                "{} which should be without any faults",
+                "{} which should be without any scratches",
+                "{} which should be without any distortion",
+                "{} which should be without any raisedarea",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with convexity defect, it appears as  noticeable outward bulge or raised area that disrupts the otherwise flat surface, creating an uneven, rounded distortion",
+                "{} with rub_mark defect, it appears as  a series of shallow, linear scratches or scuffs, often with a slight discoloration or sheen difference"
+            ]
+        },
+        "map": "aluminum sheet metal surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/neu_aluminum/train/good/Nd_141.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_aluminum/train/good/Nd_136.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_aluminum/train/good/Nd_122.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_aluminum/train/good/Nd_36.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_aluminum/train/good/Nd_192.jpg"
+        ]
+    },
+    "neu_hot_rolled_strip": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any pits",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with crazing defect, it appears as  a network of fine, intersecting dark cracks or fissures on the surface. these cracks form a pattern that resembles a web or a spider's web, with multiple small fractures creating a complex, often intricate design",
+                "{} with patches defect, it appears as  multiple obvious black irregular patches and blocks",
+                "{} with rolled-in scale defect, it appears as  dark, irregular patches or streaks embedded in the surface of the material, rough and uneven surface, with numerous raised spots and uneven color or texture",
+                "{} with pitted surface defect, it appears as  densely distributed dark dots or small blocks",
+                "{} with inclusion defect, it appears as  visible, irregularly shaped dark spots or patches on the surface, where non-metallic particles or impurities are embedded. these inclusions appear as darker or contrasting areas compared to the surrounding material, disrupting its smooth texture. the defects can vary in size and shape, with some being larger and more pronounced",
+                "{} with scratches defect, it appears as  multiple parallel bright and thin straight lines, horizontally or vertically, form a clear color difference with the dark background"
+            ]
+        },
+        "map": "hot rolled strip steel surface",
+        "samples": [
+            "/data/datasets/pub/public/NEU_datasets/NEU-DET/good/good_1.png",
+            "/data/datasets/pub/public/NEU_datasets/NEU-DET/good/good_2.png",
+            "/data/datasets/pub/public/NEU_datasets/NEU-DET/good/good_3.png",
+            "/data/datasets/pub/public/NEU_datasets/NEU-DET/good/good_4.png",
+            "/data/datasets/pub/public/NEU_datasets/NEU-DET/good/good_5.png"
+        ]
+    },
+    "neu_leather": {
+        "des": {
+            "good": [
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any damage",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any flaw",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any defect",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any visible imperfections",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any cuts",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any indentations",
+                "{} with a consistent and uniform grain texture with a natural, slightly pebbled appearance, evenly distributed color, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with color defect, it appears as  a small, irregular light discoloration mark that contrasts with the surrounding uniform gray color, disrupting the consistent appearance of the leather texture",
+                "{} with cut defect, it appears as  a small, sharp incision with a slight tear, revealing a lighter underlying layer and disrupting the uniform surface texture of the leather",
+                "{} with fold defect, it appears as  a smooth or rippled line, a raised, elongated ridge on the leather surface, where the material appears slightly wrinkled or compressed, causing a noticeable deviation from the otherwise smooth and consistent texture",
+                "{} with glue defect, it appears as  extra transparent blocks, lumps, streaks, or an uneven layer on the surface or edges, a round, glossy spot with a slightly raised surface, distinctly shinier and smoother than the surrounding matte leather texture, indicating the presence of excess adhesive material",
+                "{} with poke defect, it appears as  small holes or punctures in the leather, a small, sharp indentation or puncture in the leather surface, creating a tiny hole with slight tearing around the edges, disrupting the uniform texture"
+            ]
+        },
+        "map": "leather surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/neu_leather/train/good/leather_274.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_leather/train/good/leather_90.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_leather/train/good/leather_204.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_leather/train/good/leather_18.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_leather/train/good/leather_243.jpg"
+        ]
+    },
+    "neu_magnetic_tiles": {
+        "des": {
+            "good": [
+                "{} with a consistent, smooth, and level texture, which should be without any damage",
+                "{} with a consistent, smooth, and level texture, which should be without any flaw",
+                "{} with a consistent, smooth, and level texture, which should be without any defects",
+                "{} with a consistent, smooth, and level texture, which should be without any scratches",
+                "{} with a consistent, smooth, and level texture, which should be without any spots",
+                "{} with a consistent, smooth, and level texture, which should be without any inclusions",
+                "{} with a consistent, smooth, and level texture, which should be without any irregularities",
+                "{} with a consistent, smooth, and level texture, which should be without any visibledeviations",
+                "{} with a consistent, smooth, and level texture, which should be without any bumps",
+                "{} with a consistent, smooth, and level texture, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with break defect, it appears as  large irregular area where the surface appears torn or fractured",
+                "{} with fray defect, it appears as  slight discoloration, rough areas",
+                "{} with uneven defect, it appears as  noticeable bump or raised area that disrupts the flatness of the surface, creating a pronounced irregularity and a visible distortion in the otherwise even texture"
+            ]
+        },
+        "map": "magnetic tile surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/neu_magnetic_tiles/train/good/MT_Break_14.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_magnetic_tiles/train/good/MT_Break_48.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_magnetic_tiles/train/good/MT_Break_29.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_magnetic_tiles/train/good/MT_Break_2.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_magnetic_tiles/train/good/MT_Break_97.jpg"
+        ]
+    },
+    "neu_rail": {
+        "des": {
+            "good": [
+                "{} with a consistent, smooth, and level texture, which should be without any damage",
+                "{} with a consistent, smooth, and level texture, which should be without any flaw",
+                "{} with a consistent, smooth, and level texture, which should be without any defects",
+                "{} with a consistent, smooth, and level texture, which should be without any scratches",
+                "{} with a consistent, smooth, and level texture, which should be without any darkspots",
+                "{} with a consistent, smooth, and level texture, which should be without any inclusions",
+                "{} with a consistent, smooth, and level texture, which should be without any irregularities",
+                "{} with a consistent, smooth, and level texture, which should be without any bumps",
+                "{} with a consistent, smooth, and level texture, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with defect, it appears as a series of irregular, dark, and elongated streaks or marks on the surface. These marks appear as dark lines or smudges, often with a varying width and shape"
+            ]
+        },
+        "map": "steel rail surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/neu_rail/train/good/Nd_3.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_rail/train/good/Nd_62.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_rail/train/good/Nd_36.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_rail/train/good/Nd_61.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_rail/train/good/Nd_70.jpg"
+        ]
+    },
+    "neu_steel": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any pits",
+                "{} with a smooth, uniform finish, which should be without any holes",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with abrasion mask defect, it appears as  irregular white marks",
+                "{} with inclusion defect, it appears as  visible, irregularly shaped dark spots or patches on the surface, where non-metallic particles or impurities are embedded. these inclusions appear as darker or contrasting areas compared to the surrounding material, disrupting its smooth texture. the defects can vary in size and shape, with some being larger and more pronounced",
+                "{} with iron sheet ash defect, it appears as  black, irregularly shaped lumps with rough and jagged edges and small marks scattered around",
+                "{} with liquid defect, it appears as  irregular dark spots similar to water droplets are marked with light spots. these spots are usually slightly raised or discolored compared to the surrounding surface, with localized discoloration or surface irregularities",
+                "{} with oil spot defect, it appears as  appears black on the image in the shape of water drops, blocks, strips, etc., with rough texture",
+                "{} with oxide scale defect, it appears as  dark circular or streak marks that are slightly darker than the surrounding area",
+                "{} with patches defect, it appears as  multiple obvious black irregular patches and blocks",
+                "{} with punching hole defect, it appears as  black oval hole, obviously inconsistent with the surrounding color",
+                "{} with red iron sheet defect, it appears as  irregular, dark patches or areas on the surface. these dark spots contrast sharply with the lighter surrounding material, creating a mottled or uneven appearance. the defect appears as random, non-uniform shapes",
+                "{} with roll printing defect, it appears as  a dark, oblique, spindle-shaped mark",
+                "{} with scratches defect, it appears as  multiple parallel bright and thin straight lines, horizontally or vertically, form a clear color difference with the dark background",
+                "{} with water spot defect, it appears as  irregular streaks or marks that are darker than the surrounding surface. these streaks resemble the pattern left by water droplets or uneven drying of moisture, resulting in staining or discoloration"
+            ]
+        },
+        "map": "steel surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/neu_steel/train/good/Nd_64.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_steel/train/good/Nd_189.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_steel/train/good/Nd_138.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_steel/train/good/Nd_10.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_steel/train/good/Nd_56.jpg"
+        ]
+    },
+    "neu_tile": {
+        "des": {
+            "good": [
+                "{} with a consistent, smooth, and level texture, which should be without any damage",
+                "{} with a consistent, smooth, and level texture, which should be without any flaw",
+                "{} with a consistent, smooth, and level texture, which should be without any defects",
+                "{} with a consistent, smooth, and level texture, which should be without any scratches",
+                "{} with a consistent, smooth, and level texture, which should be without any spots",
+                "{} with a consistent, smooth, and level texture, which should be without any inclusions",
+                "{} with a consistent, smooth, and level texture, which should be without any irregularities",
+                "{} with a consistent, smooth, and level texture, which should be without any visible deviations",
+                "{} with a consistent, smooth, and level texture, which should be without any bumps",
+                "{} with a consistent, smooth, and level texture, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with blowhole defect, it appears as  dark spot, disrupts the otherwise linear and uniform texture",
+                "{} with break defect, it appears as  irregular area where the surface appears torn or fractured",
+                "{} with crack defect, it appears as  a thin fissure or line in the tile",
+                "{} with fray defect, it appears as  slight discoloration, rough areas",
+                "{} with uneven defect, it appears as  noticeable bump or raised area that disrupts the flatness of the surface, creating a pronounced irregularity and a visible distortion in the otherwise even texture"
+            ]
+        },
+        "map": "magnetic tile surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/neu_tile/train/good/tile_110.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_tile/train/good/tile_15.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_tile/train/good/tile_82.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_tile/train/good/tile_161.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/neu_tile/train/good/tile_254.jpg"
+        ]
+    },
+    "rail_surface": {
+        "des": {
+            "good": [
+                "{} with a consistent, smooth, and level texture, which should be without any damage",
+                "{} with a consistent, smooth, and level texture, which should be without any flaw",
+                "{} with a consistent, smooth, and level texture, which should be without any defects",
+                "{} with a consistent, smooth, and level texture, which should be without any darkspots",
+                "{} with a consistent, smooth, and level texture, which should be without any abrasions",
+                "{} with a consistent, smooth, and level texture, which should be without any holes",
+                "{} with a consistent, smooth, and level texture, which should be without any irregularities",
+                "{} with a consistent, smooth, and level texture, which should be without any bumps",
+                "{} with a consistent, smooth, and level texture, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with defect, it appears as black holes, irregular, dark spots and patches along the length of the rail. These marks appear as inconsistent areas of discoloration or surface roughness, indicating potential issues such as pitting, corrosion, or contamination"
+            ]
+        },
+        "map": "steel rail surface",
+        "samples": [
+            "/data/datasets/pub/public/RSDDs/good/good_1.png",
+            "/data/datasets/pub/public/RSDDs/good/good_2.png",
+            "/data/datasets/pub/public/RSDDs/good/good_3.png",
+            "/data/datasets/pub/public/RSDDs/good/good_4.png",
+            "/data/datasets/pub/public/RSDDs/good/good_5.png"
+        ]
+    },
+    "road_crack": {
+        "des": {
+            "good": [
+                "{} with a consistent, smooth, and level texture, which should be without any damage",
+                "{} with a consistent, smooth, and level texture, which should be without any flaw",
+                "{} with a consistent, smooth, and level texture, which should be without any defects",
+                "{} with a consistent, smooth, and level texture, which should be without any crack",
+                "{} with a consistent, smooth, and level texture, which should be without any irregularities",
+                "{} with a consistent, smooth, and level texture, which should be without any crumbling"
+            
+            ],
+            "defect": [
+                "{} with crack defect, it appears as straight or slightly curved lines running along the surface, varying in length and width, they can range from shallow surface cracks to deeper fissures, with widths varying from hairline to several centimeters, the edges of cracks may be sharp and clean or may exhibit some wear, spalling, or crumbling depending on the severity and age of the crack, cracks might be accompanied by surface deformations such as raised or sunken areas, they can range from minor cosmetic issues to significant structural problems, often categorized into types like longitudinal, transverse, alligator (or fatigue), and potholes. "
+            ]
+        },
+        "map": "road crack",
+        "samples": [
+            "/data/datasets/pub/public/road_crack_dataset/good/good_1.png",
+            "/data/datasets/pub/public/road_crack_dataset/good/good_2.png",
+            "/data/datasets/pub/public/road_crack_dataset/good/good_3.png",
+            "/data/datasets/pub/public/road_crack_dataset/good/good_4.png",
+            "/data/datasets/pub/public/road_crack_dataset/good/good_5.png"
+        ]
+    },
+    "severstal_steel": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any bumps",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any dents",
+                "{} with a smooth, uniform finish, which should be without any delamination",
+                "{} with a smooth, uniform finish, which should be without any cracking",
+                "{} with a smooth, uniform finish, which should be without any pitting",
+                "{} with a smooth, uniform finish, which should be without any embedded foreign particles",
+                "{} with a smooth, uniform finish, which should be without any corrosion",
+                "{} with a smooth, uniform finish, which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with pitted surface defect, it appears as  depth changes are generally larger in scale, with jagged edges and light and dark changes due to lighting and irregular depressed areas",
+                "{} with pits defect, it appears as  small, irregularly shaped pits or depressions scattered across the surface",
+                "{} with cracks defect, it appears as  distinct fracture or split that crosses the surface of the material. this crack runs perpendicular to the rolling direction and appears as a deep, narrow gap with jagged or uneven edges. some images show multiple cracks intersecting, showing jagged or cracked dark lines",
+                "{} with inclusions defect, it appears as  some raised, irregular shapes that could indicate the presence of inclusions or foreign particles embedded within the steel",
+                "{} with scratches defect, it appears as  visible dark streaks or lines, some linear marks that resemble scratches or abrasions",
+                "{} with abrasions defect, it appears as  irregular white marks",
+                "{} with peeling defect, it appears as  peeling or delaminating, visible cracks are evident around the delaminated areas",
+                "{} with patches defect, it appears as  large, irregularly shaped area of roughness and discoloration, with noticeable bumps or depressions"
+            ]
+        },
+        "map": "steel metal surface",
+        "samples": [
+            "/data/datasets/pub/public/severstal-steel-defect-detection/train_images/a7b2ab721.jpg",
+            "/data/datasets/pub/public/severstal-steel-defect-detection/train_images/34d55e849.jpg",
+            "/data/datasets/pub/public/severstal-steel-defect-detection/train_images/fa4fe42af.jpg",
+            "/data/datasets/pub/public/severstal-steel-defect-detection/train_images/5cadef440.jpg",
+            "/data/datasets/pub/public/severstal-steel-defect-detection/train_images/21927b07e.jpg"
+        ]
+    },
+    "ssgd_glasses": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any irregularities",
+                "{} which should be without any faults",
+                "{} which should be without any crack",
+                "{} which should be without any spots",
+                "{} which should be without any brokenpart",
+                "{} which should be without any hole",
+                "{} which should be without any stains"
+            ],
+            "defect": [
+                "{} with crack defect, it appears as  linear, jagged dark line across the surface, with a color difference with the surrounding",
+                "{} with broken defect, it appears as  black irregular fractures or spots on the edge, creating a pattern of sharp, uneven edges",
+                "{} with spot defect, it appears as  small, localized area that appears darker or discolored compared to the surrounding surface. it may present as a round or irregularly shaped mark, often with a slightly different texture or reflectivity",
+                "{} with scratch defect, it appears as  thin, and slightly curved mark that appears lighter and more reflective than the surrounding surface, a visible line with slightly raised or indented edges",
+                "{} with light-leakage defect, it appears as  areas where light visibly passes through the glass, creating uneven brightness or reflections that disrupt the overall clarity. this defect may manifest as irregular or diffuse bright spots, streaks, or uneven patches where the glass fails to fully block or diffuse light, affecting the uniformity of the optical properties",
+                "{} with blot defect, it appears as  dark, irregularly shaped stain or smudge that appears as a patch or spot with a distinct difference in color or opacity compared to the surrounding area",
+                "{} with broken-membrane defect, it appears as  visible, irregular rupture or tear within thin, often transparent or semi-transparent layer that is bonded to the glass surface. this defect appears as a fragmented or peeling area where the membrane is disrupted, creating a noticeable, uneven texture or pattern"
+            ]
+        },
+        "map": "mobile phone screen glass surface",
+        "samples": [
+            "/data/datasets/pub/public/SSGD/good/good_cut_01.jpg",
+            "/data/datasets/pub/public/SSGD/good/good_cut_02.jpg",
+            "/data/datasets/pub/public/SSGD/good/good_cut_03.jpg",
+            "/data/datasets/pub/public/SSGD/good/good_cut_04.jpg",
+            "/data/datasets/pub/public/SSGD/good/good_cut_05.jpg"
+        ]
+    },
+    "casting_billet": {
+        "des": {
+            "good": [
+                "{} with rough and irregular, but consistent overall texture",
+                "{} with patten like mottled, patchy distribution of light and dark areas caused by variations in surface oxidation and solidification marks",
+                "{} with shallow depressions and raised spots forming a non-uniform, slightly wavy surface",
+                "{} with texture appears fairly isotropic"
+            ],
+            "defect": [
+                "{} with cutting opening defect, it has a linear shape with well-defined edges, suggesting a crack, groove, or cut in the material",
+                "{} with longitudinal crack defect, it has a narrow, linear form, with sharply defined edges, suggesting it is a crack or a structural break",
+                "{} with scuff defect, it consists of narrow, linear, and slightly jagged lines, which could indicate scratches, cracks, or stress marks",
+                "{} with welding slag defect, it consists of a long, dark line, with a noticeable branching or branching-like structure at its base",
+                "{} with slag skin defect, it has an irregular triangular shape, with one side slightly curved and the other sides more jagged. This irregularity suggests it could be caused by a localized material failure or wear",
+                "{} with water slag mark defect, it has a irregular circular shaped patch with jagged coarse edges and a highly reflective texture"
+            ]
+        },
+        "map": "metal surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/casting_billet/train/good/Ba_17.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/casting_billet/train/good/Ba_27.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/casting_billet/train/good/Ba_356.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/casting_billet/train/good/Ba_70.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/casting_billet/train/good/Ba_255.jpg"
+        ]
+    },
+    "steel_pipe": {
+        "des": {
+            "good": [
+                "{} with uniformly mottled, finely rough, and evenly distributed texture, characteristic of a normal, defect-free steel pipe surface",
+                "{} with large bright white reflective patches which are caused by illumination",
+                "{} with fine, shallow irregularities consistent with typical manufacturing and surface finishing"
+            ],
+            "defect": [
+                "{} with warping defect in cylindrical object with a textured surface, it has an irregular, semi-circular shape, which may suggest some sort of indentation, gouge, or localized surface damage",
+                "{} with outward fold defect in cylindrical object with a textured surface, it takes the form of a narrow, jagged crack, primarily running in a vertical direction",
+                "{} with rolling defect in cylindrical object with a textured surface, It appears as a deep, elongated depression or indentation that runs vertically, likely caused by an external force or impact",
+                "{} with crack defect in cylindrical object with a textured surface, it is oval in shape, with a noticeable dark area in the center, which suggests a localized disturbance of the surface material"
+            ]
+        },
+        "map": "steel pipe metal surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/steel_pipe/1677669469470.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/steel_pipe/1677920299414.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/steel_pipe/1677698490234.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/steel_pipe/1677092286813.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/steel_pipe/1678285493573.jpg"
+        ]
+    },
+    "steel_rail": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any bumps",
+                "{} with a smooth, uniform finish, which should be without any irregularities"
+            ],
+            "defect": [
+                "{} with white spot defect, it appears as  bright areas that is circular in shape that contrasts sharply with the surrounding material, indicating a surface anomaly or contamination",
+                "{} with crack defect, it appears as  long, irregular cracks with uncertain orientation, possibly segmented, and uneven edges indicate significant stress concentrations and potential material separation along the fault line",
+                "{} with pit defect, it appears as  localized depressions with slightly irregular shapes and uneven and rough edges indicate areas of material removal or erosion",
+                "{} with abrasions defect, it appears as  a series of parallel, rough streaks or scratches, indicating surface wear caused by friction or contact with a rough object"
+            ]
+        },
+        "map": "steel rail metal surface",
+        "samples": [
+            "/data/datasets/pub/public/steel_rail/normal_images/1705942105930.jpg",
+            "/data/datasets/pub/public/steel_rail/normal_images/1705946289045.jpg",
+            "/data/datasets/pub/public/steel_rail/normal_images/1705958207594.jpg",
+            "/data/datasets/pub/public/steel_rail/normal_images/2024-1-27_12-4_5.jpg",
+            "/data/datasets/pub/public/steel_rail/normal_images/2024-1-27_20-35_5.jpg"
+        ]
+    },
+    "tianchi_aluminum": {
+        "des": {
+            "good": [
+                "{} which should be without any damage",
+                "{} which should be without any flaw",
+                "{} which should be without any defect",
+                "{} which should be without any irregularities",
+                "{} which should be without any faults",
+                "{} which should be without any scratches",
+                "{} which should be without any cracks",
+                "{} which should be without any abrasions",
+                "{} which should be without any distortion",
+                "{} which should be without any raisedarea",
+                "{} which should be without any discoloration"
+            ],
+            "defect": [
+                "{} with convexity defect, it appears as  noticeable outward bulge or raised area that disrupts the otherwise flat surface, creating an uneven, rounded distortion",
+                "{} with dirt spot defect, it appears as  noticeable small particles or contaminants embedded in the coating, creating small raised, uneven spots where dust or debris was not removed during surface treatment",
+                "{} with orange peel defect, it appears as  a textured, uneven surface with a pattern of raised, irregular lumps that resemble the skin of an orange, caused by the coating's rough and bumpy texture after surface treatment",
+                "{} with pitting defect, it appears as  a long, continuous groove or indentation running along the entire length of the profile, caused by mold issues, resulting in a pronounced, recessed area that disrupts the uniformity of the surface",
+                "{} with non-conductive defect, it appears as  areas of the surface where a layer of gold-colored paint has been applied, preventing electrical conductivity in those sections and creating a distinct, colored coating that contrasts with the untreated aluminum",
+                "{} with abrasion defect, it appears as  faint white marks on the surface, resulting from light contact with other objects after surface treatment (such as coating), which disrupts the uniform finish and leaves visible scratches or scuffs",
+                "{} with bare spots defect, it appears as  areas where the base color of the aluminum is exposed due to poor powder coating coverage, resulting in uneven and incomplete coating that reveals the underlying metal",
+                "{} with dent defect, it appears as  noticeable depression in the surface, caused by accidental impacts during handling, such as when a crane, forklift, or manual handling causes the aluminum to be bumped or struck, resulting in a distinct, recessed area",
+                "{} with coating crack defect, it appears as  a network of fine, irregular fissures in the surface coating, resembling the cracked patterns of dried, parched soil, resulting from the coating\u2019s failure during surface treatment",
+                "{} with scratch defect, it appears as  noticeable, linear mark or cut on the surface, resulting from accidental contact or handling after surface treatment, which disrupts the otherwise smooth finish and creates a visible line or groove"
+            ]
+        },
+        "map": "aluminum sheet metal surface",
+        "samples": [
+            "/data/datasets/pub/public/APDDD/good/good_1.png",
+            "/data/datasets/pub/public/APDDD/good/good_2.png",
+            "/data/datasets/pub/public/APDDD/good/good_3.png",
+            "/data/datasets/pub/public/APDDD/good/good_4.png",
+            "/data/datasets/pub/public/APDDD/good/good_5.png"
+        ]
+    },
+    "tile": {
+        "des": {
+            "good": [
+                "{} with a smooth, even texture with a consistent finish throughout, which should be without any damage",
+                "{} with a smooth, even texture with a consistent finish throughout, which should be without any flaw",
+                "{} with a smooth, even texture with a consistent finish throughout, which should be without any defect",
+                "{} with a smooth, even texture with a consistent finish throughout, which should be without any bumps",
+                "{} with a smooth, even texture with a consistent finish throughout, which should be without any irregularities",
+                "{} with a smooth, even texture with a consistent finish throughout, which should be without any cracks",
+                "{} with a smooth, even texture with a consistent finish throughout, which should be without any abrasions",
+                "{} with a smooth, even texture with a consistent finish throughout, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with crack defect, it appears as  thin, jagged line that disrupts the uniform surface, indicating a fracture that penetrates through the material, creating a visible and irregular break",
+                "{} with glue_strip defect, it appears as  shiny strip of excess adhesive that contrasts with the surrounding surface, creating a noticeable and uneven coating that disrupts the material's uniform texture",
+                "{} with gray_stroke defect, it appears as  prominent, irregular grayish streak that contrasts with the surrounding surface",
+                "{} with oil defect, it appears as  dark, glossy, and slightly reflective patch that disrupts the uniform surface",
+                "{} with rough defect, it appears as  visibly uneven and abrasive texture, with noticeable bumps and irregularities that disrupt the otherwise smooth surface"
+            ]
+        },
+        "map": "tile surface",
+        "samples": [
+            "/data/datasets/pub/public/MVTec_AD/tile/train/good/032.png",
+            "/data/datasets/pub/public/MVTec_AD/tile/train/good/197.png",
+            "/data/datasets/pub/public/MVTec_AD/tile/train/good/049.png",
+            "/data/datasets/pub/public/MVTec_AD/tile/train/good/017.png",
+            "/data/datasets/pub/public/MVTec_AD/tile/train/good/009.png"
+        ]
+    },
+    "wood": {
+        "des": {
+            "good": [
+                "{} with a consistent, even color with a smooth and uniform texture, which should be without any damage",
+                "{} with a consistent, even color with a smooth and uniform texture, which should be without any flaw",
+                "{} with a consistent, even color with a smooth and uniform texture, which should be without any defect",
+                "{} with a consistent, even color with a smooth and uniform texture, which should be without any stains",
+                "{} with a consistent, even color with a smooth and uniform texture, which should be without any irregularities",
+                "{} with a consistent, even color with a smooth and uniform texture, which should be without any scratch",
+                "{} with a consistent, even color with a smooth and uniform texture, which should be without any holes",
+                "{} with a consistent, even color with a smooth and uniform texture, which should be without any abrasions",
+                "{} with a consistent, even color with a smooth and uniform texture, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with color defect, it appears as  discoloration areas",
+                "{} with combined defect, it appears as  prominent, irregular indentation or dent in the surface, creating a noticeable depression, sometimes along with large, irregular tear or split that disrupts the surface",
+                "{} with hole defect, it appears as  holes",
+                "{} with liquid defect, it appears as  visible, dark discoloration with an irregular shape",
+                "{} with scratch defect, it appears as  linear abrasion on the surface, disrupting the natural grain and finish, and often revealing the lighter wood beneath"
+            ]
+        },
+        "map": "wood surface",
+        "samples": [
+            "/data/datasets/pub/public/MVTec_AD/wood/train/good/183.png",
+            "/data/datasets/pub/public/MVTec_AD/wood/train/good/153.png",
+            "/data/datasets/pub/public/MVTec_AD/wood/train/good/242.png",
+            "/data/datasets/pub/public/MVTec_AD/wood/train/good/022.png",
+            "/data/datasets/pub/public/MVTec_AD/wood/train/good/063.png"
+        ]
+    },
+    "hot_rolled_strip_annealing_picking": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any scars",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any scratchs",
+                "{} with a smooth, uniform finish, which should be without any pits",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with acid print defect, it appears as  uneven, mottled areas of surface color, lighter or discolored surfaces",
+                "{} with anneal scratch defect, it appears as  a thin linear mark running vertically along the surface. this scratch appears as a thin, intermittent narrow line",
+                "{} with black belt defect, it appears as  dark linear streaks running vertically along the surface",
+                "{} with color aberration defect, it appears as  obvious color difference changes",
+                "{} with dirty defect, it appears as  a series of small, irregularly shaped dark spots scattered along a perpendicular path on the surface or dark lines",
+                "{} with downtime texture defect, it appears as  black and white texture, black and white alternate to form a striped pattern",
+                "{} with edge rust defect, it appears as  scattered very small black rust spots",
+                "{} with edge wire pressing defect, it appears as  one or more wavy, linear, depressed marks that follow an irregular path on the surface",
+                "{} with gouge defect, it appears as  small, densely packed indentations or gouges on a surface, similar to the marks left by a chisel tool. these defects usually appear as repeated sharp indentations, usually of a certain depth, uneven and rough",
+                "{} with hot roll scratch defect, it appears as  light, bright areas that contrast with the background, have irregular shapes, and have a rough texture",
+                "{} with insufficient picking defect, it appears as  scattered black dots of irregular shape",
+                "{} with indentation defect, it appears as  obvious small local depressions or raised areas on the surface",
+                "{} with interlayer scratch defect, it appears as  intermittent light or dark irregular shaped scratches",
+                "{} with oxide scale peeling marks defect, it appears as  large light lines or patches on a darker background, uneven areas",
+                "{} with oxide scale peeling marks pits defect, it appears as  large patches of light and dark marks on a bright background, accompanied by an uneven surface and rough texture that destroys the original smooth surface texture, with lots of small raised points",
+                "{} with peeling defect, it appears as  irregular linear dark or lighter patches resembling scratches where the surface coating or material is beginning to separate or flake off",
+                "{} with rust spot defect, it appears as  scattered very small black rust spots",
+                "{} with scar defect, it appears as  irregular raised or sunken areas on the surface that appear rough and uneven. raised textures and irregular edges indicate that the surface has been altered, forming obvious flaws, similar to scars",
+                "{} with water mark defect, it appears as  blocky dark irregular marks",
+                "{} with weld defect, it appears as  distinct horizontal black line running across the surface of the material, the defect is visible as a consistent line that may be slightly raised, depressed or discolored compared to the surrounding areas"
+            ]
+        },
+        "map": "hot rolled strip steel surface",
+        "samples": [
+            "/data/datasets/pub/public/hot_rolled_strip_annealing_picking/ba/92_S12_C2_I704.bmp",
+            "/data/datasets/pub/public/hot_rolled_strip_annealing_picking/ba/exp_0_379.bmp",
+            "/data/datasets/pub/public/hot_rolled_strip_annealing_picking/ba/98_S1241_C1_I732.bmp",
+            "/data/datasets/pub/public/hot_rolled_strip_annealing_picking/ba/66_S2274_C1_I457.bmp",
+            "/data/datasets/pub/public/hot_rolled_strip_annealing_picking/ba/C0_S67_C4_I1743_N1_F0.500000.bmp"
+        ]
+    },
+    "nan_steel": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any scars",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any scratchs",
+                "{} with a smooth, uniform finish, which should be without any pits",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with longitudinal crack defect, it appears as  long, narrow crack that runs parallel to the length of the material. the crack appears as a continuous, irregular line with varying width and rough edges",
+                "{} with pit defect, it appears as  a depression or indentation that is noticeably darker or lighter in the center, oval in shape, with sharp edges that contrast sharply with the surrounding texture",
+                "{} with scratch defect, it appears as  vertical thin straight line has obvious color difference with the surrounding",
+                "{} with shielding head tail defect, it appears as  obvious edge part, with obvious color contrast on both sides",
+                "{} with shielding edge defect, it appears as  black block",
+                "{} with transverse crack defect, it appears as  distinct, horizontal dark line, fracture or split that crosses the surface of the material, some images show multiple cracks intersecting, showing jagged or cracked dark lines",
+                "{} with water drop defect, it appears as  a circular water droplet-shaped area with a clear difference in light and dark. the water mark is generally dark, with some surfaces having bright reflections",
+                "{} with water mark defect, it appears as  irregular dark streaks or spots that are usually slightly raised or discolored compared to the surrounding surface. they may show patterns of water droplets or moisture evaporation, leaving faint, uneven discoloration. irregular shape, varying shades of color"
+            ]
+        },
+        "map": "steel plate surface",
+        "samples": [
+            "/data/datasets/pub/public/wukuang_medium_plate/ba2/5985.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba2/715.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba/C2_S199095_C6_I7_N1.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba/C0_S2926_C3_I346_N2.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba2/1488.bmp"
+        ]
+    },
+    "wukuang_medium_plate": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any scratchs",
+                "{} with a smooth, uniform finish, which should be without any holes",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with corner crack defect, it appears as  visible linear cracks or deep curved split on a surface. cracks appear as multiple deep, narrow gaps that disrupt the continuity of the material across or along the surface. cracks may have jagged or uneven edges, irregular lines, jagged or cracked shapes, and cracks of varying sizes and depths",
+                "{} with indentation defect, it appears as  vary in size and are scattered in an irregular direction. the morphology is special, with white surroundings and a dark depression in the middle",
+                "{} with leveler roll mark defect, it appears as  irregular dents, parallel to the direction, with color difference from the surrounding area, destroying the original texture",
+                "{} with longitudinal crack defect, it appears as  long, narrow crack that runs parallel to the length of the material. the crack appears as a continuous, irregular line with varying width and rough edges",
+                "{} with oxide scale defect, it appears as  the color block has a significant difference in reflectivity between the iron oxide and the background. its size has a certain scale range and has a tortuous edge contour. the directionality of the contour is not obvious, large dark blocks",
+                "{} with oxide scale pressing defect, it appears as  a large dark area containing a series of dark, irregularly shaped streaks or smudges",
+                "{} with pock mark defect, it appears as  densely distributed black spots on the entire image, with different shapes and sizes",
+                "{} with scratch defect, it appears as  vertical straight and thin dark or light lines. there is a visible depth, and the depth varies. it is parallel or perpendicular to the rolling direction, straight line, and a small amount is curved. the scratch is a groove with a concave center and convex sides",
+                "{} with transverse crack defect, it appears as  distinct, horizontal dark line, fracture or split that crosses the surface of the material, some images show multiple cracks intersecting, showing jagged or cracked dark lines",
+                "{} with warp defect, it appears as  areas with obvious depth changes are generally larger in scale, with jagged edges and light and dark changes due to lighting, multiple overlapping and irregularly shaped raised areas, creating a visibly distorted and uneven texture",
+                "{} with water drop defect, it appears as  a circular water droplet-shaped area with a clear difference in light and dark. the water mark is generally dark, with some surfaces having bright reflections",
+                "{} with water mark defect, it appears as  irregular dark streaks or spots that are usually slightly raised or discolored compared to the surrounding surface. they may show patterns of water droplets or moisture evaporation, leaving faint, uneven discoloration. irregular shape, varying shades of color",
+                "{} with work roll mark defect, it appears as  uniform, elongated indentations or grooves running in the direction of the roller\u2019s movement. irregular, dark depression in the middle with white surrounding color changes"
+            ]
+        },
+        "map": "medium heavy steel plate surface",
+        "samples": [
+            "/data/datasets/pub/public/wukuang_medium_plate/ba2/5985.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba2/715.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba/C2_S199095_C6_I7_N1.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba/C0_S2926_C3_I346_N2.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba2/1488.bmp"
+        ]
+    },
+    "wide_thick_plate": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any scratchs",
+                "{} with a smooth, uniform finish, which should be without any holes",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with scratch defect, it appears as  vertical straight and thin dark or light lines. there is a visible depth, and the depth varies. it is parallel or perpendicular to the rolling direction, straight line, and a small amount is curved. the scratch is a groove with a concave center and convex sides",
+                "{} with corner crack defect, it appears as  visible linear cracks or deep curved split on a surface. cracks appear as multiple deep, narrow gaps that disrupt the continuity of the material across or along the surface. cracks may have jagged or uneven edges, irregular lines, jagged or cracked shapes, and cracks of varying sizes and depths",
+                "{} with indentation defect, it appears as  vary in size and are scattered in an irregular direction. the morphology is special, with white surroundings and a dark depression in the middle",
+                "{} with leveler roll mark defect, it appears as  irregular dents, parallel to the direction, with color difference from the surrounding area, destroying the original texture",
+                "{} with longitudinal crack defect, it appears as  long, narrow crack that runs parallel to the length of the material. the crack appears as a continuous, irregular line with varying width and rough edges",
+                "{} with oxide scale defect, it appears as  the color block has a significant difference in reflectivity between the iron oxide and the background. its size has a certain scale range and has a tortuous edge contour. the directionality of the contour is not obvious, large dark blocks",
+                "{} with oxide scale pressing defect, it appears as  a large dark area containing a series of dark, irregularly shaped streaks or smudges",
+                "{} with pock mark defect, it appears as  densely distributed black spots on the entire image, with different shapes and sizes",
+                "{} with transverse crack defect, it appears as  distinct, horizontal dark line, fracture or split that crosses the surface of the material, some images show multiple cracks intersecting, showing jagged or cracked dark lines",
+                "{} with warp defect, it appears as  areas with obvious depth changes are generally larger in scale, with jagged edges and light and dark changes due to lighting, multiple overlapping and irregularly shaped raised areas, creating a visibly distorted and uneven texture",
+                "{} with water drop defect, it appears as  a circular water droplet-shaped area with a clear difference in light and dark. the water mark is generally dark, with some surfaces having bright reflections",
+                "{} with water mark defect, it appears as  irregular dark streaks or spots that are usually slightly raised or discolored compared to the surrounding surface. they may show patterns of water droplets or moisture evaporation, leaving faint, uneven discoloration. irregular shape, varying shades of color",
+                "{} with work roll mark defect, it appears as  uniform, elongated indentations or grooves running in the direction of the roller\u2019s movement. irregular, dark depression in the middle with white surrounding color changes"
+            ]
+        },
+        "map": "wide thick steel plate surface",
+        "samples": [
+            "/data/datasets/pub/public/wukuang_medium_plate/ba2/5985.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba2/715.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba/C2_S199095_C6_I7_N1.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba/C0_S2926_C3_I346_N2.bmp",
+            "/data/datasets/pub/public/wukuang_medium_plate/ba2/1488.bmp"
+        ]
+    },
+    "bao_steel": {
+        "des": {
+            "good": [
+                "{} with a smooth, uniform finish, which should be without any damage",
+                "{} with a smooth, uniform finish, which should be without any flaw",
+                "{} with a smooth, uniform finish, which should be without any defect",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any faults",
+                "{} with a smooth, uniform finish, which should be without any scratches",
+                "{} with a smooth, uniform finish, which should be without any cracks",
+                "{} with a smooth, uniform finish, which should be without any stains",
+                "{} with a smooth, uniform finish, which should be without any depressions",
+                "{} with a smooth, uniform finish, which should be without any scratchs",
+                "{} with a smooth, uniform finish, which should be without any holes",
+                "{} with a smooth, uniform finish, which should be without any irregularities",
+                "{} with a smooth, uniform finish, which should be without any discolorations"
+            ],
+            "defect": [
+                "{} with corner crack defect, it appears as  visible linear cracks or deep curved split on a surface. cracks appear as multiple deep, narrow gaps that disrupt the continuity of the material across or along the surface. cracks may have jagged or uneven edges, irregular lines, jagged or cracked shapes, and cracks of varying sizes and depths",
+                "{} with indentation defect, it appears as  vary in size and are scattered in an irregular direction. the morphology is special, with white surroundings and a dark depression in the middle, white blocks",
+                "{} with leveler roll mark defect, it appears as  irregular dents, parallel to the direction, with color difference from the surrounding area, destroying the original texture",
+                "{} with longitudinal crack defect, it appears as  long, narrow crack that runs parallel to the length of the material. the crack appears as a continuous, irregular line with varying width and rough edges",
+                "{} with oxide scale defect, it appears as  the color block has a significant difference in reflectivity between the iron oxide and the background. its size has a certain scale range and has a tortuous edge contour. the directionality of the contour is not obvious, large dark blocks",
+                "{} with oxide scale pressing defect, it appears as  a large dark area containing a series of dark, irregularly shaped streaks or smudges",
+                "{} with pock mark defect, it appears as  densely distributed black spots on the entire image, with different shapes and sizes",
+                "{} with scratch defect, it appears as  vertical straight and thin dark or light lines. there is a visible depth, and the depth varies. it is parallel or perpendicular to the rolling direction, straight line, and a small amount is curved. the scratch is a groove with a concave center and convex sides",
+                "{} with transverse crack defect, it appears as  distinct, horizontal dark line, fracture or split that crosses the surface of the material, some images show multiple cracks intersecting, showing jagged or cracked dark lines",
+                "{} with warp defect, it appears as  areas with obvious depth changes are generally larger in scale, with jagged edges and light and dark changes due to lighting, multiple overlapping and irregularly shaped raised areas, creating a visibly distorted and uneven texture",
+                "{} with water drop defect, it appears as  a circular water droplet-shaped area with a clear difference in light and dark. the water mark is generally dark, with some surfaces having bright reflections",
+                "{} with water mark defect, it appears as  irregular dark streaks or spots that are usually slightly raised or discolored compared to the surrounding surface. they may show patterns of water droplets or moisture evaporation, leaving faint, uneven discoloration. irregular shape, varying shades of color",
+                "{} with work roll mark defect, it appears as  uniform, elongated indentations or grooves running in the direction of the roller\u2019s movement. irregular, dark depression in the middle with white surrounding color changes"
+            ]
+        },
+        "map": "medium heavy steel plate surface",
+        "samples": [
+            "/data/datasets/pub/public/bao_steel/ba2/30092.bmp",
+            "/data/datasets/pub/public/bao_steel/ba2/30089.bmp",
+            "/data/datasets/pub/public/bao_steel/ba2/29940.bmp",
+            "/data/datasets/pub/public/bao_steel/ba2/29989.bmp",
+            "/data/datasets/pub/public/bao_steel/ba2/30005.bmp"
+        ]
+    }
+}

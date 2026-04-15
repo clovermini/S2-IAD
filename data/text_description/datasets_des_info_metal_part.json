@@ -1,0 +1,93 @@
+{
+    "casting_billet": {
+        "des": {
+            "good": [
+                "{} with rough and irregular, but consistent overall texture",
+                "{} with patten like mottled, patchy distribution of light and dark areas caused by variations in surface oxidation and solidification marks",
+                "{} with shallow depressions and raised spots forming a non-uniform, slightly wavy surface",
+                "{} with texture appears fairly isotropic"
+            ],
+            "defect": [
+                "{} with cutting opening defect, it has a linear shape with well-defined edges, suggesting a crack, groove, or cut in the material",
+                "{} with longitudinal crack defect, it has a narrow, linear form, with sharply defined edges, suggesting it is a crack or a structural break",
+                "{} with scuff defect, it consists of narrow, linear, and slightly jagged lines, which could indicate scratches, cracks, or stress marks",
+                "{} with welding slag defect, it consists of a long, dark line, with a noticeable branching or branching-like structure at its base",
+                "{} with slag skin defect, it has an irregular triangular shape, with one side slightly curved and the other sides more jagged. This irregularity suggests it could be caused by a localized material failure or wear",
+                "{} with water slag mark defect, it has a irregular circular shaped patch with jagged coarse edges and a highly reflective texture"
+            ]
+        },
+        "map": "metal surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/casting_billet/train/good/Ba_17.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/casting_billet/train/good/Ba_27.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/casting_billet/train/good/Ba_356.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/casting_billet/train/good/Ba_70.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/casting_billet/train/good/Ba_255.jpg"
+        ]
+    },
+    "steel_pipe": {
+        "des": {
+            "good": [
+                "{} with uniformly mottled, finely rough, and evenly distributed texture, characteristic of a normal, defect-free steel pipe surface",
+                "{} with large bright white reflective patches which are caused by illumination",
+                "{} with fine, shallow irregularities consistent with typical manufacturing and surface finishing"
+            ],
+            "defect": [
+                "{} with warping defect in cylindrical object with a textured surface, it has an irregular, semi-circular shape, which may suggest some sort of indentation, gouge, or localized surface damage",
+                "{} with outward fold defect in cylindrical object with a textured surface, it takes the form of a narrow, jagged crack, primarily running in a vertical direction",
+                "{} with rolling defect in cylindrical object with a textured surface, It appears as a deep, elongated depression or indentation that runs vertically, likely caused by an external force or impact",
+                "{} with crack defect in cylindrical object with a textured surface, it is oval in shape, with a noticeable dark area in the center, which suggests a localized disturbance of the surface material"
+            ]
+        },
+        "map": "steel pipe metal surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/steel_pipe/1677669469470.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/steel_pipe/1677920299414.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/steel_pipe/1677698490234.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/steel_pipe/1677092286813.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/steel_pipe/1678285493573.jpg"
+        ]
+    },
+    "KolektorSDD": {
+        "des": {
+            "good": [
+                "{} with a rough, granular texture with a speckled pattern",
+                "{} with fine-grained, matte surface with a uniform but slightly mottled grayscale distribution",
+                "{} with contains irregular, small-scale variations in brightness, giving a speckled appearance",
+                "{} with large white bright area on the left side is a saturated reflection zone caused by strong illumination, appearing as an irregular, smooth-edged patch with no distinct surface texture"
+            ],
+            "defect": [
+                "{} with microscopic fractions or cracks were observed on the surface of the plastic embedding in electrical commutators, it appears as thin horizontal scratch-like line with sharp edges and dark color"
+            ]
+        },
+        "map": "kolektor surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD/train/good/kos36_Part1.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD/train/good/kos50_Part0.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD/train/good/kos11_Part5.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD/train/good/kos31_Part6.jpg",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD/train/good/kos48_Part3.jpg"
+        ]
+    },
+    "KolektorSDD2": {
+        "des": {
+            "good": [
+                "{} with a uniform, consistent texture with a smooth and even black appearance",
+                "{} with uniformly dark, matte background with fine, irregular fiber-like patterns",
+                "{} with small, scattered light specks are visible, which are part of the natural surface pattern and can resemble tiny defect points"
+            ],
+            "defect": [
+                "{} with discolor defect",
+                "{} with surface imperfections defect, it appears as scratch-like streak with scattered pink reflective specks"
+            ]
+        },
+        "map": "kolektor surface",
+        "samples": [
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD2/train/good/11294.png",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD2/train/good/10696.png",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD2/train/good/11510.png",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD2/train/good/11633.png",
+            "/data/datasets/pub/public/own_anomaly_detect/KolektorSDD2/train/good/12307.png"
+        ]
+    }
+}
