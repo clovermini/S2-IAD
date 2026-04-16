@@ -67,19 +67,22 @@ class ImageGrid:
         return img
 
 
-def normalize(pred, max_value=None, min_value=None):    # 归一化[0, 1]
+def normalize(pred, max_value=None, min_value=None):    # Normalize to [0, 1].
+    """Normalize a prediction map to the [0, 1] range."""
     if max_value is None or min_value is None:
         return (pred - pred.min()) / (pred.max() - pred.min())
     else:
         return (pred - min_value) / (max_value - min_value)
 
 
-def normalize_clip1(pred, max_value=None, min_value=None):    # 归一化[0, 1]
+def normalize_clip1(pred, max_value=None, min_value=None):    # Clip to [0, 1].
+    """Clip a prediction map directly into the [0, 1] range."""
     pred[pred < 0] = 0
     pred[pred > 1] = 1
     return pred
 
-def apply_ad_scoremap(image, scoremap, alpha=0.5):   # 将score map映射到 image上
+def apply_ad_scoremap(image, scoremap, alpha=0.5):   # Overlay the score map on the image.
+    """Overlay an anomaly score map on top of the input image."""
     np_image = np.asarray(image, dtype=float)
     scoremap = (scoremap * 255).astype(np.uint8)
     scoremap = cv2.applyColorMap(scoremap, cv2.COLORMAP_JET)
@@ -135,22 +138,14 @@ def superimpose_anomaly_map(
     return superimposed_map
 
 
-def vis(pathes, anomaly_map, score, img_size, save_path, cls_name, gt_masks=None, suffix=''):   # 可视化 anomaly 图
-    #pred_masks = anomaly_map >= 0.5
+def vis(pathes, anomaly_map, score, img_size, save_path, cls_name, gt_masks=None, suffix=''):   # Visualize anomaly maps.
+    """Save side-by-side visualizations for anomaly maps and optional masks."""
     
     for idx, path in enumerate(pathes):
         visualization = ImageGrid()
         cls = path.split('/')[-2]
         filename = path.split('/')[-1]
-        #print('filename ', filename)
-        #if '/good/' in path:
-        #    continue
-        #if not os.path.exists('/home/data/Datasets/public/pipeData/mask/'+filename.replace('.jpg', '.png')):
-        #    continue
-        #if filename not in ['Ba_284.jpg', 'Co_210.jpg', 'Lc_166.jpg', 'Sc_52.jpg', 'Ss_168.jpg', 'Ws_206.jpg', 'Co_137.jpg', 'Lc_266.jpg', 'Ss_92.jpg', 'Ws_292.jpg', 'WSM_198.jpg', '429.jpg', '009.jpg', '075.jpg', '322.jpg', '360.jpg', '443.jpg', '2024-1-27_12-8_0.jpg', '2024-1-28_8-33_1.jpg', '2024-1-28_10-58_2_1.jpg']:
-        #    continue
-        #if filename not in ['106060608.jpg', '1655476450350.jpg', '1660312589274.jpg', '1660311977201.jpg', '1670217313244.jpg', '1705937820948.jpg', '327.jpg', 'Ba_284.jpg', 'Co_210.jpg', 'Lc_166.jpg', 'Sc_52.jpg', 'Ss_168.jpg', 'Ws_206.jpg']:
-        #    continue
+    
         vis = cv2.cvtColor(cv2.resize(cv2.imread(path), (img_size, img_size)), cv2.COLOR_BGR2RGB)  # RGB
         mask_show = normalize(anomaly_map[idx]).cpu().numpy()  # normalize  normalize_clip1
         mask = anomaly_map[idx].cpu().numpy()
@@ -158,25 +153,16 @@ def vis(pathes, anomaly_map, score, img_size, save_path, cls_name, gt_masks=None
         vis_map = superimpose_anomaly_map(mask_show, vis, normalize=False)  # apply_ad_scoremap(vis, mask_show)
         #image = np.concatenate([vis, vis_map], axis=1)
         #vis = cv2.cvtColor(vis, cv2.COLOR_RGB2BGR)  # BGR
-
         
         save_vis = os.path.join(save_path, cls_name[idx], cls)  # cls
         if not os.path.exists(save_vis):
             os.makedirs(save_vis)
-        # cv2.imwrite(os.path.join(save_vis, filename[:-4]+'.png'), vis_map)
-        # continue
         
         visualization.add_image(vis, "Image")
         if gt_masks is not None:
             visualization.add_image(image=gt_masks[idx].cpu().numpy()*255, color_map="gray", title="Ground Truth")
         visualization.add_image(vis_map, "Predicted Heat Map")
-        #visualization.add_image(image=pred_mask*255, color_map="gray", title="Predicted Mask")
         image = visualization.generate()
-
         
-        #print('mask ', mask.shape)
         #visualization = cv2.cvtColor(visualization, cv2.COLOR_RGB2BGR)
         cv2.imwrite(os.path.join(save_vis, filename[:-4]+'.png'), image)
-        #cv2.imwrite(os.path.join(save_vis, filename[:-4]+'_'+str(np.max(mask))+'_'+str(score[idx].cpu().numpy())+suffix+'.png'), image)
-        #save_path_str = os.path.join(save_vis, filename[:-4]+'_'+str(np.max(mask))+'_'+str(score[idx].cpu().numpy())+'.png')
-        #print('save_path ', save_path_str)

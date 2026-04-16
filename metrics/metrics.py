@@ -1,10 +1,12 @@
 '''
 20250411 chuniliu
-缺陷检测评估指标
-异常检测：pAUROC /  PRO / F1-max
-目标检测：precision / recall / mAP@0.5 / mAP@.5:.95  / p-r曲线 / 混淆矩阵
-缺陷检测（多类）：目标检测类的同上 / 漏检率 / 误报率 / 准确率  / 语义分割：pixel accuracy、 mean pixel accuracy(per class)、 mean iou  一般来说计算到目标检测的准确率就行了
-参数：Params / GFLOPS / FPS
+Defect-detection evaluation metrics.
+Anomaly detection: pAUROC / PRO / F1-max.
+Object detection: precision / recall / mAP@0.5 / mAP@.5:.95 / p-r curve / confusion matrix.
+Defect detection (multi-class): same as object detection, plus miss rate / false positive rate / accuracy /
+semantic segmentation metrics such as pixel accuracy, mean pixel accuracy (per class), and mean IoU.
+In practice, object-detection-level accuracy is often sufficient.
+Efficiency metrics: Params / GFLOPS / FPS.
 '''
 
 import os
@@ -15,7 +17,8 @@ from skimage import measure
 from sklearn.metrics import auc, roc_auc_score, average_precision_score, f1_score, precision_recall_curve, pairwise
 
 
-def cal_pro_score(masks, amaps, max_step=200, expect_fpr=0.3):  # 计算 pro_auc
+def cal_pro_score(masks, amaps, max_step=200, expect_fpr=0.3):  # Compute PRO-AUC.
+    """Compute the PRO-AUC metric for pixel-level anomaly maps."""
     # ref: https://github.com/gudovskiy/cflow-ad/blob/master/train.py
     binary_amaps = np.zeros_like(amaps, dtype=bool)
     min_th, max_th = amaps.min(), amaps.max()
@@ -43,6 +46,7 @@ def cal_pro_score(masks, amaps, max_step=200, expect_fpr=0.3):  # 计算 pro_auc
 
 
 def cal_metrics(obj_list, results):
+    """Compute per-class and mean anomaly-detection metrics."""
     # metrics
     table_ls = []
     auroc_sp_ls = []
@@ -75,7 +79,7 @@ def cal_metrics(obj_list, results):
         # print('gt_px ', gt_px.shape, ' gt_px ', np.unique(gt_px), ' obj ', obj)
         auroc_px = roc_auc_score(gt_px.ravel(), pr_px.ravel())
         auroc_sp = roc_auc_score(gt_sp, pr_sp)
-        '''  # 为了节省时间，临时屏蔽
+        '''  # other metrics
         ap_sp = average_precision_score(gt_sp, pr_sp)
         ap_px = average_precision_score(gt_px.ravel(), pr_px.ravel())
         # f1_sp
@@ -129,6 +133,7 @@ import numpy as np
 from sklearn.metrics import roc_auc_score, average_precision_score, precision_recall_curve
 
 def cal_pro_score_optimized(masks, amaps, max_step=200, expect_fpr=0.3):
+    """Optimized PRO-AUC computation with more vectorized operations."""
     binary_amaps = np.zeros_like(amaps, dtype=bool)
     min_th, max_th = amaps.min(), amaps.max()
     delta = (max_th - min_th) / max_step
@@ -168,6 +173,7 @@ def cal_pro_score_optimized(masks, amaps, max_step=200, expect_fpr=0.3):
 
 
 def cal_metrics_optimized(obj_list, results, compute_all=False):
+    """Compute metrics with parallel per-class processing."""
     # Precompute all necessary data outside loops
     cls_names = results['cls_names']
     imgs_masks = results['imgs_masks'].squeeze(1).numpy() if len(results['imgs_masks'].shape) == 4 else results['imgs_masks'].numpy()
@@ -231,6 +237,7 @@ def cal_metrics_optimized(obj_list, results, compute_all=False):
     return tabulate(table_ls, headers=headers, tablefmt="pipe")
 
 def compute_f1_score(y_true, y_score):
+    """Return the maximum F1 score over the precision-recall curve."""
     precisions, recalls, _ = precision_recall_curve(y_true, y_score)
     f1_scores = (2 * precisions * recalls) / (precisions + recalls + 1e-12)
     return np.max(f1_scores[np.isfinite(f1_scores)])

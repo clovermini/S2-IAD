@@ -1,3 +1,5 @@
+"""Common utility helpers for logging, seeding, and feature loading."""
+
 import logging
 import os
 import torch
@@ -6,13 +8,14 @@ import random
 
 
 def load_embedding(filename):
-    """加载单个嵌入文件"""
+    """Load a single embedding file from disk."""
     if not os.path.exists(filename):
         print(f"Error: File not found at {filename}")
         return None
     return torch.load(filename)
 
-def setup_seed(seed):  # 设置随机种子
+def setup_seed(seed):  # Set random seeds.
+    """Set random seeds for reproducible experiments."""
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     np.random.seed(seed)
@@ -22,6 +25,7 @@ def setup_seed(seed):  # 设置随机种子
 
 
 def set_logger(txt_path, mode='a+'):
+    """Create a file-and-console logger for experiment output."""
      # logger
     root_logger = logging.getLogger()
     for handler in root_logger.handlers[:]:

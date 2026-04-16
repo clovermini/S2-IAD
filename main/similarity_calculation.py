@@ -1,19 +1,25 @@
+"""Similarity and anomaly-map utility functions used during inference.
+
+This file contains reusable tensor operations for text-image matching,
+few-shot retrieval, self-similarity scoring, and map fusion.
+"""
+
 import torch
 import torch.nn.functional as F
 
 
 def print_tensor_stats(tensor, name="Tensor"):
-    """打印一个张量的基本统计信息"""
+    """Print basic statistics for a tensor."""
     print(
-        f"--- {name} 统计信息 ---\n"
-        f"  数值范围 (Min): {tensor.min().item():.6f}\n"
-        f"  数值范围 (Max): {tensor.max().item():.6f}\n"
-        f"  均值 (Mean)  : {tensor.mean().item():.6f}\n"
-        f"  标准差 (Std) : {tensor.std().item():.6f}\n"
+        f"--- {name} statistics ---\n"
+        f"  Value range (Min): {tensor.min().item():.6f}\n"
+        f"  Value range (Max): {tensor.max().item():.6f}\n"
+        f"  Mean            : {tensor.mean().item():.6f}\n"
+        f"  Std             : {tensor.std().item():.6f}\n"
     )
 
 def normalize_map(anomaly_map):
-    """将一批异常图分别归一化到 [0, 1]"""
+    """Normalize each anomaly map in a batch independently to [0, 1]."""
     B, C, H, W = anomaly_map.shape
     map_flat = anomaly_map.view(B, C, -1)
     map_min = map_flat.min(dim=-1, keepdim=True)[0]
@@ -24,7 +30,8 @@ def normalize_map(anomaly_map):
     return map_scaled.view(B, C, H, W)
 
 
-def compute_score(image_features, text_features):  # 计算 图像文本相似得分
+def compute_score(image_features, text_features): 
+    """Compute image-level normal/abnormal probabilities from image and text features."""
     image_features /= image_features.norm(dim=1, keepdim=True)
     text_features /= text_features.norm(dim=1, keepdim=True)
     text_probs = (torch.bmm(image_features.unsqueeze(1), text_features)/0.07).softmax(dim=-1)
@@ -32,14 +39,16 @@ def compute_score(image_features, text_features):  # 计算 图像文本相似�
     return text_probs
 
 
-def compute_sim(image_features, text_features):  # 计算 图像文本相似度
+def compute_sim(image_features, text_features): 
+    """Compute patch-text similarity with temperature-scaled softmax normalization."""
     image_features /= image_features.norm(dim=-1, keepdim=True)
     text_features /= text_features.norm(dim=1, keepdim=True)
     simmarity = (torch.bmm(image_features.squeeze(2), text_features)/0.07).softmax(dim=-1)
     return simmarity
 
 
-def compute_sim_minus(image_features, text_features):  # 计算 图像文本相似度
+def compute_sim_minus(image_features, text_features): 
+    """Boost the abnormal branch by explicitly subtracting the normal similarity."""
     image_features /= image_features.norm(dim=-1, keepdim=True)
     text_features /= text_features.norm(dim=1, keepdim=True)
     simmarity = torch.bmm(image_features.squeeze(2), text_features)
@@ -57,41 +66,40 @@ def compute_sim_minus(image_features, text_features):  # 计算 图像文本相�
 
 
 def get_similarity_map(sm, shape):
+    """Reshape patch-level similarity scores back into a spatial similarity map."""
     side = int(sm.shape[1] ** 0.5)
     sm = sm.reshape(sm.shape[0], side, side, -1).permute(0, 3, 1, 2)
-    #sm = torch.nn.functional.interpolate(sm, shape, mode='bilinear')
     sm = sm.permute(0, 2, 3, 1)
     return sm
 
 
 def few_shot(memory, token, class_name, idx):
+    """Retrieve few-shot distances between current tokens and stored support features."""
     retrive = []
     for i in class_name:
         L, N, D = memory[i][idx].shape   # [980, 1, 640]    [5, 225, 640]
-        # print('few-shot ... class_name ', class_name, 'idx ', idx, ' -- ', memory[i][idx].shape)
         retrive.append(memory[i][idx].permute(2, 1, 0).reshape(D,-1)) # D NL   # [640, 225*5]
     retrive = torch.stack(retrive)# B D NL   # [32, 640, 225*5]   
-    # print('retrive ', retrive.shape, ' token ', token.shape)
     # B D L    [32, 169, 640]  [32, 640, 225*5]   
     M = 1/2 * torch.min(1.0 - torch.bmm(F.normalize(token.squeeze(2), dim = -1), F.normalize(retrive, dim = 1)), dim = -1)[0]
     return M
 
 
 def get_self_sim(patch_feature):
+    """Estimate anomaly from within-image patch self-similarity."""
     '''
-    自相似异常图
+    Self-similarity anomaly map.
     patch_feature: torch.Size([5, 1369, 768])
     '''
     B, N, D = patch_feature.shape
     H = W = int(N ** 0.5)
 
-    # 1. L2 归一化
+    # 1. L2 norm
     patch_feature = F.normalize(patch_feature, dim=-1)  # [B, N, D]
 
-    # 2. 计算两两余弦相似度矩阵 (1 - cosθ) -> [N, N]
     sim_matrix = torch.bmm(patch_feature, patch_feature.transpose(1, 2))  # [B, N, N]
 
-    global_sim = sim_matrix.mean(dim=1)  # [B, N] 每个patch与全局的相似度
+    global_sim = sim_matrix.mean(dim=1)  # [B, N] every patch with global similarity
 
     global_sim = 1 - global_sim.view(B, H, W)
     
@@ -100,48 +108,50 @@ def get_self_sim(patch_feature):
 
 def get_self_sim_topk_batch(patch_feature, initial_anomaly_map, k_self_sim=5, k_update=5, reduction='mean'):
     """
-    自相似异常图：每个 patch 与本图内最相似的 top-k 个 patch 的距离，并利用 top-k 分值更新初始异常得分图
-    :param patch_feature: Tensor [B, N, D]，B=batch size，N=patch 数量，D=特征维度
-    :param initial_anomaly_map: Tensor [B, N]，初始异常得分图
-    :param k: int，取 top-k 最近邻
-    :param reduction: 'mean' 或 'min'，如何聚合 top-k 分值
+    Self-similarity anomaly map based on top-k nearest patches inside each image,
+    with optional score propagation to update an initial anomaly map.
+
+    :param patch_feature: Tensor [B, N, D], where B is batch size, N is the number of patches, and D is feature dimension
+    :param initial_anomaly_map: Tensor [B, N], the initial anomaly score map
+    :param k: int, number of top-k nearest neighbors
+    :param reduction: 'mean' or 'min', how to aggregate the top-k scores
     :return:
-        anomaly_map: Tensor [B, H, W]，基于 top-k 距离的异常得分图
-        updated_anomaly_map: Tensor [B, H, W]，更新后的异常得分图
+        anomaly_map: Tensor [B, H, W], anomaly map derived from top-k distances
+        updated_anomaly_map: Tensor [B, H, W], updated anomaly map after score propagation
     """
     B, N, D = patch_feature.shape
-    H = W = int(N ** 0.5)  # 假设 patch 排布为正方形
+    H = W = int(N ** 0.5)  # Assume the patches form a square grid.
 
-    # 1. L2 归一化
+    # 1. Apply L2 normalization.
     patch_feature = F.normalize(patch_feature, dim=-1)  # [B, N, D]
 
-    # 2. 计算两两余弦相似度矩阵 (1 - cosθ) -> [B, N, N]
-    sim_matrix = torch.bmm(patch_feature, patch_feature.transpose(1, 2))  # 余弦相似度
-    dist_matrix = 1.0 - sim_matrix  # 余弦距离
+    # 2. Compute the pairwise cosine-similarity matrix, then convert it to distance.
+    sim_matrix = torch.bmm(patch_feature, patch_feature.transpose(1, 2))  # Cosine similarity.
+    dist_matrix = 1.0 - sim_matrix  # Cosine distance.
 
-    # 3. 排除自身 patch（对角线）
+    # 3. Exclude each patch itself by masking the diagonal.
     identity_matrix = torch.eye(N, device=patch_feature.device).unsqueeze(0).repeat(B, 1, 1)
     dist_matrix = dist_matrix + identity_matrix * 1e6
 
-     # 1. 确定需要计算的最大的 k 值，以保证一次 topk 调用就足够
-    # 如果不需要更新，则 k_for_topk 就是 k_self_sim
+     # Determine the maximum k needed so a single top-k call is sufficient.
+    # If no update is needed, k_for_topk is simply k_self_sim.
     k_for_topk = k_self_sim
     if initial_anomaly_map is not None:
         k_for_topk = max(k_self_sim, k_update)
 
-    # 4. 对每个 patch，找到 top-k 最近邻的距离和索引
+    # 4. Find the top-k nearest-neighbor distances and indices for each patch.
     topk_dist_full, topk_indices_full = torch.topk(dist_matrix, k=k_for_topk, largest=False, dim=-1)  # [B, N, k]
 
     topk_dist_for_sim = topk_dist_full[:, :, :k_self_sim]
 
-    # 5. 聚合 top-k 距离
+    # 5. Aggregate the top-k distances.
     if reduction == 'mean':
         anomaly_score = topk_dist_for_sim.mean(dim=-1)  # [B, N]
     elif reduction == 'min':
         anomaly_score = topk_dist_for_sim.min(dim=-1)[0]  # [B, N]
     else:
         raise ValueError("reduction must be 'mean' or 'min'")
-    # 6. reshape 回 (B, H, W) 得到异常得分图
+    # 6. Reshape back to (B, H, W) to obtain the anomaly map.
     anomaly_map = anomaly_score.view(B, H, W)  # [B, H, W]
 
     if initial_anomaly_map is None:
@@ -149,10 +159,9 @@ def get_self_sim_topk_batch(patch_feature, initial_anomaly_map, k_self_sim=5, k_
 
     topk_indices_for_update = topk_indices_full[:, :, :k_update]
 
-    # 7. 更新初始异常得分图
-    # 将 top-k 分值从 initial_anomaly_map 中提取出来并聚合
+    # 7. Update the initial anomaly map.
+    # Gather top-k scores from the initial anomaly map and aggregate them.
     initial_anomaly_map_flat = initial_anomaly_map.view(B, -1)  # [B, N]
-    # 检查索引范围
     # Gather top-k scores using advanced indexing
     batch_indices = torch.arange(B, device=patch_feature.device).view(B, 1, 1).expand(B, N, k_update)
     topk_initial_scores = initial_anomaly_map_flat[batch_indices, topk_indices_for_update]  # [B, N, k]
@@ -162,7 +171,7 @@ def get_self_sim_topk_batch(patch_feature, initial_anomaly_map, k_self_sim=5, k_
     elif reduction == 'min':
         updated_initial_scores = topk_initial_scores.min(dim=-1)[0]  # [B, N]
 
-    # 8. 更新后的异常得分图
+    # 8. Build the updated anomaly map.
     updated_anomaly_map = updated_initial_scores.view(B, H, W)  # [B, H, W]
 
     return anomaly_map, updated_anomaly_map
@@ -170,37 +179,39 @@ def get_self_sim_topk_batch(patch_feature, initial_anomaly_map, k_self_sim=5, k_
 
 def get_batch_sim(batch_patch_features, k=5, reduction='mean'):
     """
-    自相似异常图：每张图像 vs batch 内其余所有图像
+    Cross-image similarity anomaly map: each image compared against the other
+    images in the same batch.
+
     :param batch_patch_features: Tensor [B, N, D]
-    :param k: int, top-k 最近邻
-    :param reduction: 'mean' or 'min' 如何把 k 个距离汇成一个分数
+    :param k: int, top-k nearest neighbors
+    :param reduction: 'mean' or 'min', how to reduce the k distances into one score
     :return: Tensor [B, H, W],  H=W=int(sqrt(N))
     """
     B, N, D = batch_patch_features.shape
     H = W = int(N ** 0.5)
 
-    # 1. L2 归一化
+    # 1. Apply L2 normalization.
     x = F.normalize(batch_patch_features, dim=-1)          # [B, N, D]
 
-    # 2. 构造“除自己外”的 mask
+    # 2. Build a mask that excludes the current image itself.
     mask = ~torch.eye(B, device=x.device, dtype=torch.bool)  # [B, B]
-    # 后续 reshape 成 [B, 1, B*N] 广播用
+    # It will later be reshaped for broadcasting.
 
-    # 3. 把 batch 内所有 patch 拼在一起 [B*N, D]
+    # 3. Flatten all patches in the batch into a single matrix [B*N, D].
     all_patches = x.view(-1, D)  # [B*N, D]
 
-    # 4. 两两余弦距离矩阵 (1-cos)  -> [B*N, B*N]
-    sim = torch.mm(all_patches, all_patches.T)  # 余弦相似度
-    dist = 1.0 - sim                            # 余弦距离
+    # 4. Compute the pairwise cosine-distance matrix.
+    sim = torch.mm(all_patches, all_patches.T)  # Cosine similarity.
+    dist = 1.0 - sim                            # Cosine distance.
 
-    # 5. 去掉自身图像的 patch（对角块）
+    # 5. Exclude patches from the same image by masking the diagonal blocks.
     mask_full = mask.repeat_interleave(N, dim=0).repeat_interleave(N, dim=1)
-    dist = dist.masked_fill(~mask_full, 1e6)    # 把自身图像距离置为很大值
+    dist = dist.masked_fill(~mask_full, 1e6)    # Assign a very large distance to same-image patches.
 
-    # 6. 每个 query patch 取 top-k 最小距离
+    # 6. For each query patch, keep the top-k smallest distances.
     topk_dist, _ = torch.topk(dist, k=k, largest=False, dim=-1)  # [B*N, k]
 
-    # 7. 聚合 k 个距离
+    # 7. Aggregate the k distances.
     if reduction == 'mean':
         score = topk_dist.mean(dim=-1)  # [B*N]
     elif reduction == 'min':
@@ -208,17 +219,18 @@ def get_batch_sim(batch_patch_features, k=5, reduction='mean'):
     else:
         raise ValueError("reduction must be 'mean' or 'min'")
 
-    # 8. reshape 回 (B, H, W)
+    # 8. Reshape back to (B, H, W).
     anomaly_map = score.view(B, H, W)
     # print('get_batch_sim anomaly_map ', anomaly_map.size())
     return anomaly_map
 
 
 def get_topk_mean(anomaly_map, k=1):
-    # topk avg
-    # 1. 展平 anomaly_map
+    """Convert a spatial anomaly map into an image-level score via top-k averaging."""
+    # Top-k average.
+    # 1. Flatten the anomaly map.
     anomaly_map_flat = anomaly_map.view(anomaly_map.shape[0], -1)  # [B, H*W]
-    # 2. 提取每个样本的 top-k 值
+    # 2. Extract the top-k values for each sample.
     topk_values, _ = torch.topk(anomaly_map_flat, k, dim=-1)  # [B, k]
     topk_mean = topk_values.mean(dim=-1)  # [B]
     return topk_mean
@@ -228,25 +240,26 @@ import torch
 import torch.nn.functional as F
 
 def adaptive_fusion_spatial(anomaly_map_list, T=1.0):
+    """Fuse multiple anomaly maps with pixel-wise softmax attention."""
     """
-    使用像素级的Softmax作为空间注意力，自适应地融合两个异常图。
+    Use pixel-wise softmax as spatial attention to adaptively fuse two anomaly maps.
     
-    :param self_sim_map: Tensor [B, H, W], 图内自相似度异常图 (需要先归一化到0-1)
-    :param batch_sim_map: Tensor [B, H, W], 图像间相似度异常图 (需要先归一化到0-1)
-    :param T: 温度系数，用于调节Softmax的平滑程度。
-    :return: fused_map: Tensor [B, H, W], 融合后的异常图。
+    :param self_sim_map: Tensor [B, H, W], within-image self-similarity anomaly map (should be normalized to 0-1 first)
+    :param batch_sim_map: Tensor [B, H, W], cross-image similarity anomaly map (should be normalized to 0-1 first)
+    :param T: Temperature coefficient used to control the smoothness of the softmax.
+    :return: fused_map: Tensor [B, H, W], fused anomaly map.
     """
-    # 1. 将两个map堆叠成一个新的维度，形状变为 [B, 2, H, W]
+    # 1. Stack the two maps along a new dimension, giving shape [B, 2, H, W].
     stacked_maps = torch.stack(anomaly_map_list, dim=1)
     # stacked_maps_norm = normalize_map(stacked_maps) 
     
-    # 2. 沿着新创建的维度(dim=1)计算Softmax，得到空间权重图
+    # 2. Apply softmax along the new dimension (dim=1) to get spatial weight maps.
     # weight_maps shape: [B, 2, H, W]
     weight_maps = F.softmax(stacked_maps / T, dim=1)
     
-    # 3. 将权重图与原始图相乘并求和
-    # (weight_maps * stacked_maps) 得到加权后的两个图
-    # .sum(dim=1) 沿着新维度求和，完成融合
+    # 3. Multiply the original maps by their weights and sum them.
+    # (weight_maps * stacked_maps) gives the weighted maps.
+    # .sum(dim=1) completes the fusion along the new dimension.
     fused_map = torch.sum(weight_maps * stacked_maps, dim=1)
     
     return fused_map
@@ -272,7 +285,7 @@ def calculate_initial_anomaly_scores(features):
 
 # --- Main Synthesized Logic ---
 
-# patch14 的异常得分和patch 16的dino feature相似度结合计算update
+# Combine patch-14 anomaly scores with patch-16 DINO feature similarity for score updates.
 def non_local_multi_scale_anomaly(image_tensor, k=5):
     """
     Implements the full logic:

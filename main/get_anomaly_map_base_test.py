@@ -1,3 +1,9 @@
+"""Evaluation script for testing saved prompt-learning checkpoints.
+
+This script loads trained text embeddings when available, builds anomaly maps,
+and evaluates image-level and pixel-level performance on the selected dataset.
+"""
+
 import os
 import sys
 o_path = os.getcwd()
@@ -13,7 +19,7 @@ import numpy as np
 import torch.nn.functional as F
 import torchvision.transforms as transforms
 from models import open_clip
-from models.dinov2.models.vision_transformer import vit_large  # 确保 dinov2 目录在 PYTHONPATH
+from models.dinov2.models.vision_transformer import vit_large  # Ensure the dinov2 directory is available in PYTHONPATH.
 from few_shot import memory_surgery
 from prompt_ensemble import prepare_text_feature
 from similarity_calculation import *
@@ -23,14 +29,9 @@ from utils.tools import set_logger, setup_seed
 from metrics import metrics
 from tqdm import tqdm
 
-
-# model_name = 'ViT-B-16-plus-240'  pretrain = 'laion400m_e32'  default  /home/data/liuchuni/.cache/clip/vit_b_16_plus_240-laion400m_e32-699c4b84.pt
-# model_name = 'ViT-L-14-quickgelu'   pretrained = 'dfn2b'
-# model_name = 'ViT-B-16-SigLIP-384'  pretrained = 'webli' 
-# model_name = 'ViT-L-14-336'  pretrain = 'openai'
-# model_name = 'ViT-SO400M-14-SigLIP-384'  pretrain = 'webli'
-# model_name = 'ViT-H-14-378-quickgelu'  pretrain = 'dfn5b'   # /home/data/liuchuni/.cache/huggingface/hub/models--apple--DFN5B-CLIP-ViT-H-14-378
 class CLIP_AD(nn.Module):
+    """Wrapper around CLIP and DINO feature extractors used during evaluation."""
+
     def __init__(self, model_name = 'ViT-B-16-plus-240', pretrain = 'laion400m_e32', img_size=240, device='cuda'):
         super(CLIP_AD, self).__init__()
         # model_name = 'ViT-H-14-378-quickgelu' 
@@ -45,14 +46,14 @@ class CLIP_AD(nn.Module):
         self.device = device
         # print('tokenizer ', self.tokenizer)
 
-        # 1. 构造模型
+        # 1. Build the DINO backbone.
         self.dino_model = vit_large(patch_size=14,
                   img_size=518,
                   init_values=1.0,
                   block_chunks=0,
-                  num_register_tokens=4)   # reg4 版本
+                  num_register_tokens=4)   # reg4 version
 
-        # 2. 加载本地权重
+        # 2. Load local pretrained weights.
         ckpt_path = '/data/account/liuchuni/.cache/torch/hub/checkpoints/dinov2_vitl14_reg4_pretrain.pth'
         state_dict = torch.load(ckpt_path, map_location='cpu')
         self.dino_model.load_state_dict(state_dict, strict=True)
@@ -60,13 +61,10 @@ class CLIP_AD(nn.Module):
     
     @torch.no_grad()
     def encode_text(self, text, return_tokens=False):
-        # from open_clip import tokenizer
-        # text = self.tokenizer.tokenize(text)
+        """Encode text prompts and return normalized text embeddings."""
         text = self.tokenizer(text, context_length=self.model.context_length).to(self.device)
 
-        # print('encode_text text ', text.shape, ' self.model.context_length ', self.model.context_length)
         text_token, all_tokens = self.model.encode_text(text, return_tokens=return_tokens)
-        #print('encode_text text_token ', text_token.shape)
         text_token /= text_token.norm(dim=-1, keepdim=True)  
         if return_tokens:
             all_tokens /= all_tokens.norm(dim=-1, keepdim=True)  
@@ -74,27 +72,23 @@ class CLIP_AD(nn.Module):
         return text_token
     
     @torch.no_grad()
-    def encode_image(self, image, feature_list=None, DPAM_layer=None, ignore_residual=False):   # 图像编码
-        #print('encode_image image shape ', image.shape)   # [32, 3, 240, 240]
+    def encode_image(self, image, feature_list=None, DPAM_layer=None, ignore_residual=False):   # Image encoding.
+        """Encode images and return CLIP visual features."""
         b, _, _, _ = image.shape
 
         class_tokens, tokens, patch_tokens = self.model.encode_image(image, None, proj = True, feature_list = feature_list, DPAM_layer = DPAM_layer, ignore_residual = ignore_residual)  # feature_list = [3, 6, 9, 12], DPAM_layer = 10
-        #print('encode_image patch_tokens ', len(patch_tokens)) 
-        #for i,ft in enumerate(patch_tokens):
-        #    print('patch_tokens ', i, ' -- ', ft.shape)  # base_8 [226, 32, 896]  # cls + patch token  [1, 0, 2]
-
-        #print('encode_image class_tokens ', class_tokens.shape)   # [32, 640] 
-        #print('encode_image tokens ', tokens.shape)   # [32, 729, 1024]] 
         return class_tokens, tokens, patch_tokens
     
     @torch.no_grad()
     def get_dino_features(self, image):
+        """Extract intermediate DINO features for similarity-based maps."""
         mid_tokens = self.dino_model.get_intermediate_layers(image, n=[5, 11, 17, 23])
         return mid_tokens
 
 
 @torch.no_grad()
 def test(args,):
+    """Run evaluation with optional trained prompt embeddings."""
     img_size = args.image_size
     patch_size = args.patch_size   # 14  # 16
     feature_list = args.feature_list   # [3,6,9]
@@ -167,7 +161,6 @@ def test(args,):
 
         obj_list = datasets.CLSNAMES
         test_data = datasets.MetalDataset(root=dataset_dir, meta_path=meta_path, transform=preprocess, target_transform=transform, mode='test', k_shot=k_shot, save_dir=save_path, obj_name=obj_list)
-        # obj_list = test_data.get_cls_names()
         print('******* running ... obj_list ', obj_list)
     else: 
         datasets.CLSNAMES = [dataset_name]
@@ -211,116 +204,53 @@ def test(args,):
             results['gt_sp'].extend(items['anomaly'].detach().cpu())
 
             b, c, h, w = images.shape   # [32, 3, 240, 240]
-            #print('images shape ', images.shape)  
-  
-            
-            # redundant_features = Mem_redundant_features[cls_id]
 
             if load_epoch == 0:
-                #normal_features = torch.load(os.path.join(emb_ouput_path, "base_normal_embedding.pt")).to(device)
-                #anomaly_features = torch.load(os.path.join(emb_ouput_path, "base_anomaly_embedding.pt")).to(device)
                 average_normal_features = Mermory_avg_normal_text_features[cls_id]
                 average_anomaly_features = Mermory_avg_abnormal_text_features[cls_id]
-                #print('normal_features ', normal_features.size(), ' anomaly_features ', anomaly_features.size())
             else:
-                # print('emb_ouput_path ', emb_ouput_path)
                 if use_detailed:
                     normal_features = torch.load(os.path.join(emb_ouput_path, f"adjusted_normal_epoch_{load_epoch:04d}_kead.pt")).to(device)
-                    #normal_features = torch.load(os.path.join(emb_ouput_path, "base_normal_embedding.pt")).to(device)
                     anomaly_features = torch.load(os.path.join(emb_ouput_path, f"adjusted_anomaly_epoch_{load_epoch:04d}_kead.pt")).to(device)
                 else:
                     normal_features = torch.load(os.path.join(emb_ouput_path, f"adjusted_normal_epoch_{load_epoch:04d}.pt")).to(device)
-                    #normal_features = torch.load(os.path.join(emb_ouput_path, "base_normal_embedding.pt")).to(device)
                     anomaly_features = torch.load(os.path.join(emb_ouput_path, f"adjusted_anomaly_epoch_{load_epoch:04d}.pt")).to(device)
-                
-                #anomaly_features = torch.load(os.path.join(emb_ouput_path, "base_anomaly_embedding.pt")).to(device)
-                #print('normal_features ', normal_features.size(), ' anomaly_features ', anomaly_features.size())
 
                 average_normal_features = normal_features.expand(b, 1, normal_features.shape[-1])
                 average_anomaly_features = anomaly_features.expand(b, 1, anomaly_features.shape[-1])
             
-            # text_features = torch.cat((average_normal_features - redundant_features, average_anomaly_features - redundant_features), dim = 1)
             text_features = torch.cat((average_normal_features, average_anomaly_features), dim = 1)
-            #print('text_features ', text_features.shape)
   
             image_features, tokens, patch_features = model.encode_image(images, feature_list, dpam_layer, ignore_residual)
             image_features = image_features / image_features.norm(dim=-1, keepdim=True)
-            #print('image_features ', image_features.shape, ' ', image_features[0])
         
             text_probs = compute_score(image_features, text_features.permute(0, 2, 1))   # [24, 1, 2]
-            text_probs = text_probs[:, 0, 1]  # z0score  # softmax 就考虑了正常和异常的分布  text_probs[:, 0, 1]  [bs, 1, 2]
-            # print('text_probs ', text_probs.shape, ' ', text_probs)
-            #sys.exit()
+            text_probs = text_probs[:, 0, 1]  # z0score  # softmax already models the normal/abnormal distribution  text_probs[:, 0, 1]  [bs, 1, 2]
 
             anomaly_map_list = []
             for idx, patch_feature in enumerate(patch_features):
-                if idx != (len(patch_features)-1):  # 只用最后一层的patch_features
+                if idx != (len(patch_features)-1):  # Only use the patch features from the last layer.
                     continue
                 patch_feature = patch_feature/ patch_feature.norm(dim = -1, keepdim = True)   # [32, 226, 640]
 
-                # similarity = compute_sim(patch_feature, text_features.permute(0, 2, 1)) # [:,:,1]   # [32, 169]
                 similarity = compute_sim_minus(patch_feature, text_features.permute(0, 2, 1)) # [:,:,1]   # [32, 169]
-
-                #sim_min = similarity.min(dim=1, keepdim=True)[0]   # [32, 1]
-                #sim_max = similarity.max(dim=1, keepdim=True)[0]   # [32, 1]
-                # 防止除零
-                #similarity = (similarity - sim_min) / (sim_max - sim_min + 1e-8)  # [32, 169]
-                
-                # print('similarity ', similarity.size())
                 similarity_map = get_similarity_map(similarity, args.image_size)  # [24, 15, 15, 2] / [24, 37, 37, 2]
-                # print('path text ... similarity ', similarity.shape, ' similarity_map ', similarity_map.shape) # [24, 1370, 2]  [24, 37, 37, 2]
-                # print('similarity_map ', similarity_map.shape)  # [24, 15, 15, 2] / [24, 37, 37, 2]
                 anomaly_map = similarity_map[...,1]  # similarity_map[...,1]   [24, 15, 15, 2] / [24, 37, 37, 2]
-                #redundant_feats = similarity_map.mean(3, keepdim=False) # along cls dim
-                #print('redundant_feats ', redundant_feats.shape)
-                #anomaly_map = similarity_map[...,1] - redundant_feats
                 anomaly_map_list.append(anomaly_map)
 
             anomaly_map_text = torch.stack(anomaly_map_list)
-            #print('anomaly_map v0 ', anomaly_map.shape)
             anomaly_map_text = anomaly_map_text.mean(dim = 0)
-
-            # text_probs_anomaly_map = get_topk_mean(anomaly_map_text, 1)
-
-            # print('anomaly_map ', anomaly_map.max().item(), ' anomaly_map_self ', anomaly_map_self.max().item())
 
             # patch_features self sim to mean
             dino_features = model.get_dino_features(images)
-            
-            ## get self sim
-            anomaly_map_list_self = []
-            for idx, patch_feature in enumerate(dino_features):  # patch_features
-                if idx == 0:  # 用指定层patch_features
-                    continue
-                # patch_feature = patch_feature[:,1:, :]
-                
-                #patch_feature = patch_feature/ patch_feature.norm(dim = -1, keepdim = True)   # [32, 226, 640]
-                #mean_patch = patch_feature.mean(dim=1, keepdim=True)  # [32, 1, 640]
-                ##print('mean_patch ', mean_patch.shape)
-                #similarity = 1-torch.matmul(patch_feature, mean_patch.permute(0, 2, 1))
-                ## print('similarity ', similarity.shape)
-                #similarity_map = get_similarity_map(similarity, args.image_size)
-                ##print('path mean ... similarity ', similarity.shape, ' similarity_map ', similarity_map.shape) # [24, 1370, 1] [24, 37, 37, 1]
-                #anomaly_map_list_self.append(similarity_map[...,0])
-                
-                self_sim_map = get_self_sim(patch_feature)
-                anomaly_map_list_self.append(self_sim_map)
-        
-            anomaly_map_self = torch.stack(anomaly_map_list_self).mean(dim=0)
-            # anomaly_map_list.append(torch.stack(anomaly_map_list_self).mean(dim=0))
-            
 
-            # get batch sim
+            # get self & batch sim
             anomaly_map_list_batch_sim = []
             anomaly_map_list_self_topk = []
             simmarity_softmax_text_update_list = []
             for idx, patch_feature in enumerate(dino_features):  # patch_features  dino_features
-                #if idx <= 2:  # 用指定层patch_features
-                #    continue
-                # patch_feature = patch_feature[:,1:, :]
                 patch_feature = patch_feature/ patch_feature.norm(dim = -1, keepdim = True)   # [32, 226, 640]
                 similarity_map = get_batch_sim(patch_feature, k=batch_sim_topk, reduction='mean')
-                # print('similarity_map ', similarity_map.size())
                 anomaly_map_list_batch_sim.append(similarity_map)
 
                 if idx == 0:
@@ -334,36 +264,16 @@ def test(args,):
                     simmarity_softmax_text_update_list.append(simmarity_softmax_text_update)
         
             anomaly_map_batch_sim = torch.stack(anomaly_map_list_batch_sim).mean(dim=0)
-            #anomaly_map_list.append(torch.stack(anomaly_map_list_self).mean(dim=0))
-
             anomaly_map_self_topk = torch.stack(anomaly_map_list_self_topk).mean(dim=0)
             anomaly_map_text_update = torch.stack(simmarity_softmax_text_update_list).mean(dim=0)
-
-            #anomaly_map = adaptive_fusion_spatial([anomaly_map_text_update, anomaly_map_batch_sim], T=1.0)
-            #anomaly_map = (anomaly_map_text_update + anomaly_map_batch_sim) / 2.0
-
-            # anomaly_map = (anomaly_map_text + anomaly_map_batch_sim + anomaly_map_self) / 3.0
-            # anomaly_map = (anomaly_map_text + anomaly_map_batch_sim + anomaly_map_self_topk) / 3.0
-            
-            # anomaly_map = anomaly_map_text_update
-            # anomaly_map = (anomaly_map_text_update + anomaly_map_batch_sim + anomaly_map_self_topk) / 3.0
-
-            # anomaly_map = anomaly_map_text_update
-            # anomaly_map = (anomaly_map_text_update + anomaly_map_batch_sim) / 2.0
-            # anomaly_map = adaptive_fusion_spatial([anomaly_map_text_update, anomaly_map_batch_sim], T=1.0)
             
             # for steel pipe
-            #fused_map = adaptive_fusion_spatial([anomaly_map_self_topk, anomaly_map_text_update], T=1.0)
-            #anomaly_map = adaptive_fusion_spatial([anomaly_map_batch_sim, fused_map], T=1.0)
-            # for steel pipe training
-            #fused_map = adaptive_fusion_spatial([anomaly_map_self_topk, anomaly_map_batch_sim], T=1.0)
-            #anomaly_map = adaptive_fusion_spatial([anomaly_map_text_update, fused_map], T=1.0)
+            fused_map = adaptive_fusion_spatial([anomaly_map_self_topk, anomaly_map_text_update], T=1.0)
+            anomaly_map = adaptive_fusion_spatial([anomaly_map_batch_sim, fused_map], T=1.0)
 
             # for casting billet
             #fused_map = adaptive_fusion_spatial([anomaly_map_self_topk, anomaly_map_batch_sim], T=1.0)
-            # anomaly_map = adaptive_fusion_spatial([anomaly_map_text_update, fused_map], T=1.0)
-            # for casting billet training
-            #anomaly_map = (anomaly_map_text_update + fused_map / 2.0 ) 
+            #anomaly_map = adaptive_fusion_spatial([anomaly_map_text_update, fused_map], T=1.0)
 
             # for ksdd
             #anomaly_map = adaptive_fusion_spatial([anomaly_map_text_update, anomaly_map_self_topk, anomaly_map_batch_sim], T=1.0)
@@ -376,71 +286,35 @@ def test(args,):
             #anomaly_map = (fused_map + anomaly_map_batch_sim) / 2.0
             
             # for visa
-            fused_map = adaptive_fusion_spatial([anomaly_map_self_topk, anomaly_map_text_update], T=1.0)
-            anomaly_map = (fused_map + anomaly_map_batch_sim) / 2.0
-
-
-            # anomaly_map = (anomaly_map_text_update + anomaly_map_batch_sim + anomaly_map_self_topk) / 3.0
-            #fused_map = adaptive_fusion_spatial([anomaly_map_self_topk, anomaly_map_batch_sim], T=1.0)
-            #anomaly_map = (anomaly_map_text_update + fused_map) / 2.0
-            #anomaly_map = (anomaly_map_text_update + anomaly_map_batch_sim + anomaly_map_self_topk) / 3.0
-            #anomaly_map = adaptive_fusion_spatial([anomaly_map_text_update, anomaly_map_batch_sim], T=1.0)
-            #anomaly_map = adaptive_fusion_spatial([fused_map, anomaly_map_batch_sim], T=1.0)
+            #fused_map = adaptive_fusion_spatial([anomaly_map_self_topk, anomaly_map_text_update], T=1.0)
+            #anomaly_map = (fused_map + anomaly_map_batch_sim) / 2.0
             
-
-            #anomaly_map = (anomaly_map_text_update + anomaly_map_self + anomaly_map_batch_sim) / 3.0
-            #anomaly_map = adaptive_fusion_spatial([anomaly_map_text_update, anomaly_map_batch_sim], T=1.0)
-            #fused_map = torch.maximum(anomaly_map_self_topk, anomaly_map_batch_sim)
-            #anomaly_map = torch.maximum(anomaly_map_text_update, fused_map)
-
-            '''
-            print_tensor_stats(anomaly_map_self, "图内自相似图 (anomaly_map_self)")
-            print_tensor_stats(anomaly_map_self_topk, "图内自相似图topk (anomaly_map_self_topk)")
-            print_tensor_stats(anomaly_map_batch_sim, "图像间相似图 (anomaly_map_batch_sim)")
-            print_tensor_stats(anomaly_map_text_update, "文本缺陷相似图 (anomaly_map_text_update)")
-            '''
-            # anomaly_map = anomaly_map_text
             text_probs_anomaly_map = get_topk_mean(anomaly_map, score_topk)
         
-            if few:  # 结合 VAND-APRIL-GAN 改写一下
+            if few:  # Adapted from VAND-APRIL-GAN.
                 anomaly_maps_few_shot = []
-                for idx, p in enumerate(dino_features):  # 用全部的patch features  patch_features  dino_features
-                    # p = p[:, 1:, :]  # 去除 cls
-
+                for idx, p in enumerate(dino_features):  # Use all patch features  patch_features  dino_features
                     cos = few_shot(mem_features, p, cls_name, idx)
-                    #anomaly_map_few_shot = np.min((1 - cos), 0).reshape(1, 1, height, height)
                     anomaly_map_few_shot = cos.reshape((b, h//patch_size, w//patch_size)).cuda()
                     anomaly_maps_few_shot.append(anomaly_map_few_shot.cpu().numpy())
                 anomaly_map_few_shot = np.mean(anomaly_maps_few_shot, axis=0)
                 anomaly_map_few_shot = torch.from_numpy(anomaly_map_few_shot).to(device)
-                anomaly_map = (anomaly_map + anomaly_map_few_shot)
-                #anomaly_map = adaptive_fusion_spatial([anomaly_map, anomaly_map_few_shot], T=1.0)
-                # anomaly_map = anomaly_map.to(device)
+                
+                # anomaly_map = (anomaly_map + anomaly_map_few_shot)
+                anomaly_map = adaptive_fusion_spatial([anomaly_map, anomaly_map_few_shot], T=1.0)
 
                 text_probs_anomaly_map = (text_probs_anomaly_map + get_topk_mean(anomaly_map_few_shot, score_topk))
-
-                # print_min_max(anomaly_map_few_shot, 'anomaly_map_few_shot')
-                #print_min_max(anomaly_map, 'anomaly_map')
-                # max anomaly 没有对anomaly 归一化，因此这个可能会占主导位置 ，理论上应该按照类别整体归一化一下
-            
-                # text_probs = (text_probs.cpu() + torch.max(torch.max(anomaly_map, dim = 1)[0],dim = 1)[0])/2.0   # [32]
-                #print('text_probs final min:', text_probs.min().item(), 'max:', text_probs.max().item())
-
-            # 原始方案
-            #text_probs = (text_probs + torch.max(torch.max(anomaly_map, dim = 1)[0],dim = 1)[0])/2.0   # [32]
             
             text_probs = (text_probs + text_probs_anomaly_map) / 2.0
-            # text_probs = text_probs_anomaly_map
 
             anomaly_map_final = F.interpolate(torch.tensor(anomaly_map).unsqueeze(1), size=img_size, mode='bilinear', align_corners=True)
             anomaly_map_final = anomaly_map_final.squeeze(1)
-            # print('anomaly_map_final ', anomaly_map_final.size())
             results['pr_sp'].extend(text_probs.detach().cpu())
             results['anomaly_maps'].append(anomaly_map_final)
 
-            # 可视化
+            # Visualization.
             if visualize and k_shot == 0:
-                show_path = os.path.join(save_path, 'vis/')  # '/home/data/liuchuni/projects/fsad_big_model/defect_lvlms/output/anomaly_maps_surgery_base_show/'  # _test
+                show_path = os.path.join(save_path, 'vis/') 
                 if not os.path.exists(show_path):
                     os.mkdir(show_path)
                 visualizer.vis(items['img_path'], anomaly_map_final, text_probs.detach().cpu(), img_size, show_path, items['cls_name'], gt_mask.squeeze(1))
@@ -448,19 +322,15 @@ def test(args,):
             if save_anomaly_map and k_shot == 4:
             
                 anomaly_map = anomaly_map.cpu().numpy()
-                #print('tokens ', tokens.shape)
                 for idx, path in enumerate(items['img_path']):
                     cls_name = items['cls_name'][idx]
                     image_name = path.split('/')[-1]
                     path = os.path.join(save_path, 'anomaly_map/', cls_name)
                     if not os.path.exists(path):
                         os.makedirs(path)
-                    # token_save_path = path[:-4]+'_token.npy'
                     anomaly_save_path = os.path.join(path, image_name.split('.')[0]+'_anomaly.npy')
 
-                    # token = tokens[idx]
                     ano_map = anomaly_map[idx]
-                    # np.save(token_save_path, token)
                     np.save(anomaly_save_path, ano_map)
                     print('saving ... anomaly_save_path ', anomaly_save_path)
 
@@ -494,8 +364,6 @@ if __name__ == '__main__':
     parser.add_argument("--score_topk", type=int, default=1, help="topk for calc score")
     parser.add_argument("--load_epoch", type=int, default=0, help="load epoch for emb")
 
-    # parser.add_argument("--mode", type=str, default="zero_shot", help="zero shot or few shot")
-    # few shot
     parser.add_argument("--k_shot", type=int, default=10, help="10-shot, 5-shot, 1-shot")
     parser.add_argument("--seed", type=int, default=10, help="random seed")
 

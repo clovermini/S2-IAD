@@ -1,3 +1,10 @@
+"""Prompt construction and text-feature preparation for anomaly detection.
+
+The functions in this file build prompt ensembles from dataset descriptions,
+encode them with the text encoder, and aggregate them into reusable normal and
+abnormal text prototypes.
+"""
+
 import os
 from typing import Union, List
 from pkg_resources import packaging
@@ -6,8 +13,6 @@ import numpy as np
 import json
 
 
-# April GAN
-# 应用于自己的数据集  metal_own
 metal_own_map = {'al_224_light':'aluminum sheet metal surface',
                  'casting_billet': 'casting billet metal surface',
                  'steel_pipe': 'steel pipe metal surface',
@@ -16,6 +21,7 @@ metal_own_map = {'al_224_light':'aluminum sheet metal surface',
 
 
 def encode_text_with_prompt_ensemble(model, objs, tokenizer, device):
+    """Encode normal and abnormal prompt templates for each object name."""
     prompt_normal = ['{}', 'flawless {}', 'perfect {}', 'unblemished {}', '{} without flaw', '{} without defect', '{} without damage']
     prompt_abnormal = ['damaged {}', 'broken {}', '{} with flaw', '{} with defect', '{} with damage']
     prompt_state = [prompt_normal, prompt_abnormal]
@@ -45,7 +51,9 @@ def encode_text_with_prompt_ensemble(model, objs, tokenizer, device):
     return text_prompts
 
 
-class prompt_order():  # prompt 函数
+class prompt_order():  # prompt ensemble
+    """Generate prompt ensembles from dataset-specific textual descriptions."""
+
     def __init__(self, des_path) -> None:
         super().__init__()
 
@@ -69,7 +77,6 @@ class prompt_order():  # prompt 函数
 
         # April GAN
         self.state_normal_list = ['{}', 'flawless {}', 'perfect {}', 'unblemished {}', '{} without flaw', '{} without defect', '{} without damage']
-        # self.state_normal_list = ['{}', 'flawless {}', 'perfect {}', 'unblemished {}']
         self.state_anomaly_list = ['damaged {}', 'broken {}', '{} with flaw', '{} with defect', '{} with damage']
 
         self.template_list_old =[
@@ -97,7 +104,6 @@ class prompt_order():  # prompt 函数
         ]
 
         # April GAN
-        #self.template_list = ['a cropped photo of the {}.']
         self.template_list = ['a bad photo of a {}.', 
                               'a low resolution photo of the {}.', 
                               'a bad photo of the {}.', 
@@ -137,10 +143,10 @@ class prompt_order():  # prompt 函数
 
 
     def prompt(self, class_name, use_detailed=True):
+        """Return normal, abnormal, and empty prompt templates for one class."""
         des_info = self.total_des[class_name]
         print('class_name ', class_name)
         class_name = des_info['map']
-        # class_name = 'object'  # 'metal surface'
         print('map class_name ', class_name)
 
         state_normal_list = self.state_normal_list.copy()
@@ -166,6 +172,7 @@ class prompt_order():  # prompt 函数
 
 @torch.no_grad()
 def prepare_text_feature(model, obj_list, des_path, use_detailed=True, cache_path='', cache=False):  # 准备文本特征   obj_list: cate list
+    """Build one averaged normal text feature and one averaged abnormal text feature per class."""
 
     cache_file = ''
     if len(cache_path) > 0:
@@ -177,22 +184,20 @@ def prepare_text_feature(model, obj_list, des_path, use_detailed=True, cache_pat
     text_generator = prompt_order(des_path)
 
     for obj_name in obj_list:
-        
-        # 构造缓存文件名
+        # Each class uses its own prompt set so the final text prototype remains category-aware.
         suffix = '_KeAD' if use_detailed else ''
         cache_file = os.path.join(cache_path, f"{obj_name}_text_features"+suffix+".pt")
 
         if cache and os.path.exists(cache_file):
-            # 从缓存加载
+            # Load from cache if available to save time on repeated runs.
             data = torch.load(cache_file, map_location="cpu")
             normal_text_features = data["normal"]
             abnormal_text_features = data["abnormal"]
             print(f"[Cached] Loaded text features for '{obj_name}' from disk.")
         else:         
-            normal_description, abnormal_description, empty_template = text_generator.prompt(obj_name, use_detailed=use_detailed)  # alu
+            normal_description, abnormal_description, _ = text_generator.prompt(obj_name, use_detailed=use_detailed)  # alu
             print('normal_description ', len(normal_description), ' abnormal_description ', len(abnormal_description))
-            #normal_description = ['good']
-            #abnormal_description = ['damaged']
+
             '''
             normal_text_features = None
             for x in normal_description:
@@ -214,27 +219,24 @@ def prepare_text_feature(model, obj_list, des_path, use_detailed=True, cache_pat
             '''
             normal_text_features = model.encode_text(normal_description).float()
             abnormal_text_features = model.encode_text(abnormal_description).float()
-            # empty_features = model.encode_text(empty_template).float()
 
             normal_text_features = torch.mean(normal_text_features, dim = 0, keepdim= True) 
             normal_text_features /= normal_text_features.norm()
             abnormal_text_features = torch.mean(abnormal_text_features, dim = 0, keepdim= True)   # 取平均
             abnormal_text_features /= abnormal_text_features.norm()
-            # redundant_features = torch.mean(empty_features, dim = 0, keepdim= True)   # 取平均
-            # redundant_features /= redundant_features.norm()
-            # 保存到缓存
+
+            # save to cache for future runs with the same settings to save time.
             # torch.save({"normal": normal_text_features, "abnormal": abnormal_text_features}, cache_file)
             # print(f"[Saved] Cached text features for '{obj_name}' to disk.")
 
         Mermory_avg_normal_text_features.append(normal_text_features)
         Mermory_avg_abnormal_text_features.append(abnormal_text_features)
-        # Mem_redundant_features.append(redundant_features)
     
+    # Stack per-class text prototypes so they can be indexed directly by class id.
     Mermory_avg_normal_text_features = torch.stack(Mermory_avg_normal_text_features)      # [2, 1, 640]  
     Mermory_avg_abnormal_text_features = torch.stack(Mermory_avg_abnormal_text_features)  # [2, 1, 640]  
-    # Mem_redundant_features = torch.stack(Mem_redundant_features)
+
     print('Mermory_avg_normal_text_features ', Mermory_avg_normal_text_features.shape) 
     print('Mermory_avg_abnormal_text_features ', Mermory_avg_abnormal_text_features.shape)   
-    # print('Mem_redundant_features ', Mem_redundant_features.shape)
 
     return Mermory_avg_normal_text_features, Mermory_avg_abnormal_text_features, Mem_redundant_features
