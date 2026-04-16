@@ -34,11 +34,7 @@ class CLIP_AD(nn.Module):
 
     def __init__(self, model_name = 'ViT-B-16-plus-240', pretrain = 'laion400m_e32', img_size=240, device='cuda'):
         super(CLIP_AD, self).__init__()
-        # model_name = 'ViT-H-14-378-quickgelu' 
-        # pretrain = 'dfn5b'  #
-        # pretrain = '/home/data/liuchuni/.cache/huggingface/hub/models--apple--DFN5B-CLIP-ViT-H-14-378/open_clip_pytorch_model.bin'  #
-        # model_name = 'ViT-B-16-plus-240'  
-        # pretrain = 'laion400m_e32'
+
         self.model, _, self.preprocess = open_clip.create_customer_model_and_transforms(model_name, pretrained=pretrain, force_image_size=img_size)
 
         # self.tokenizer = open_clip.tokenizer

@@ -329,7 +329,7 @@ def train_adapter(model, preprocess, normal_images, img_size, save_path, logger,
     logger.info("\n--- Starting Training with Data Augmentation ---")
     logger.info(f"Augmentation pipeline: {train_transforms}")
 
-    emb_ouput_path = os.path.join(save_path, 'adjusted_text_features/')  # '/home/data/liuchuni/projects/fsad_big_model/defect_lvlms/output/anomaly_maps_surgery_base_show/'  # _test
+    emb_ouput_path = os.path.join(save_path, 'adjusted_text_features/') 
     if not os.path.exists(emb_ouput_path):
         os.mkdir(emb_ouput_path)
     logger.info(f"Embeddings will be saved to '{emb_ouput_path}/'")

@@ -63,6 +63,5 @@ class MetalSolver(object):
             f.write(json.dumps(info, indent=4) + "\n")
 
 if __name__ == '__main__':
-    #runner = MetalSolver(root='/data/datasets/pub/public/own_anomaly_detect', meta_save_path='/data/account/liuchuni/code/fsad_big_model/defect_lvlms/data/metal_own_meta.json')
     runner = MetalSolver(root='/data/datasets/pub/public/own_anomaly_detect', meta_save_path='/data/datasets/pub/public/own_anomaly_detect/metal_meta_ksdd.json')
     runner.run()
