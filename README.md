@@ -1,6 +1,6 @@
 # S2-IAD
 
-Official PyTorch implementation of **S2-IAD: Hybrid Semantic-Structural Representation and Few-Shot Scene Prompting for Industrial Anomaly Detection**.
+Official PyTorch implementation of **S2-IAD: Constrained Semantic Adaptation and Structural Evidence Calibration for Industrial Anomaly Detection**.
 
 This repository implements an industrial anomaly detection pipeline built on top of:
 
